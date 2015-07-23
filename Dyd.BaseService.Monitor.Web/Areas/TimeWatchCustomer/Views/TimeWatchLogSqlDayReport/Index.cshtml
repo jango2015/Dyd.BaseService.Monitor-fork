@@ -1,0 +1,65 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.TimeWatch.Model.tb_timewatchlog_sql_dayreport_model>
+@{
+    ViewBag.Title = "SQL月耗时表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Dictionary<int, Dyd.BaseService.Monitor.Domain.PlatformManage.Model.timewatchConnModel> dic =
+        ViewBag.TimeWatchConn as Dictionary<int, Dyd.BaseService.Monitor.Domain.PlatformManage.Model.timewatchConnModel>;
+}
+<div class="head">
+    <div class="title">
+        SQL月耗时表
+    </div>
+</div>
+<div class="orderlist m10 myorder">
+    @*@using (Ajax.BeginForm("index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "List", HttpMethod = "post", InsertionMode = InsertionMode.Replace }, new RouteValueDictionary { { "id", "searchForm" } }))*@
+    @using (Html.BeginForm("index", "TimeWatchLogSqlDayReport", FormMethod.Get, new RouteValueDictionary { { "id", "searchForm" } }))      
+    {
+        <div class="item_list pt10">
+            <div class="item_list">
+                <ul>
+                    <li>
+                        <label>SqlHash</label>
+                        <input type="text" name="sqlhash"  class="smalltext"  value="@ViewBag.sqlhash" />
+                    </li>
+                    <li>
+                        <label>Sql</label>
+                        <input type="text" name="sql" value="@ViewBag.sql" />
+                    </li>
+                    <li>
+                        <label>降序</label>
+                        <select name="orderby">
+                            <option value="" @(ViewBag.orderby+""==""?"selected='selected'":"")>日期</option>
+                            <option value="avgtime" @(ViewBag.orderby+""=="avgtime"?"selected='selected'":"")>平均时间</option>
+                            <option value="maxtime" @(ViewBag.orderby+""=="maxtime"?"selected='selected'":"")>最大时间</option>
+                            <option value="mintime" @(ViewBag.orderby+""=="mintime"?"selected='selected'":"")>最小时间</option>
+                             <option value="count" @(ViewBag.orderby+""=="count"?"selected='selected'":"")>调用次数</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label>数据库</label>
+                        <select name="connid">
+                            @foreach (KeyValuePair<int, Dyd.BaseService.Monitor.Domain.PlatformManage.Model.timewatchConnModel> d in dic)
+                            { 
+                                <option value="@d.Key"@Html.Raw(d.Key==ViewBag.Connid?"selected=selected":"") >@d.Value.name</option>
+                            }
+                        </select>
+                       
+                    </li>
+                    <li>
+                        <label>日期</label><input type="text"  class="smalltext"  name="timebegin" value="@ViewBag.timebegin" /> - <input type="text"  class="smalltext"  name="timeend" value="@ViewBag.timeend" />（必须为日期）
+                    </li>
+                   
+                    
+                </ul>
+                 <input type="submit" class="btn1" value="搜索" accesskey="S" />
+                      @*  <a href="@Url.Action("Chart")" class="btn1">查看图表</a>*@
+            </div>
+        </div>
+    }
+    <div class="tab_cont">
+        <div class="List">
+            @Html.Partial("List",Model)
+        </div>
+    </div>
+</div>

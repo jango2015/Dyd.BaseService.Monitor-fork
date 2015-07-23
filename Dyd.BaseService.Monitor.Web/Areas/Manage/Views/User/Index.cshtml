@@ -1,0 +1,80 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model List<Dyd.BaseService.Monitor.Domain.PlatformManage.Model.tb_user_model>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    function Delete(id) {
+        if(confirm("确定删除吗？"))
+        {
+            $.ajax({
+                url: '@Url.Action("Delete", "User")',
+                type: "post",
+                data: {
+                    id: id
+                },
+                success: function (data) {
+                    if (data.code == 1) {
+                        if (data.state == true) {
+                            alert("删除成功！");
+                            window.location.reload();
+                        }
+                        else {
+                            alert("删除失败：请确认该用户下的任务已清除！");
+                        }
+                    }
+                    else {
+                        alert(data.msg);
+                    }
+                }
+            })
+        }
+    }
+</script>
+<div class="head">
+    <div class="title">
+        用户
+    </div>
+</div>
+<div class="orderlist m10 myorder">
+    <a href="@Url.Action("add", "user")" class="btn1">新增</a>
+    <div class="tab_cont">
+        <div class="list">
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>用户工号</th>
+                    <th>用户名</th>
+                    <th>类型</th>
+                    <th>创建时间</th>
+                    <th>手机</th>
+                    <th>邮箱</th>
+                    <th>最后错误发送时间（邮件）</th>
+                    <th>错误提醒频率（分钟）</th>
+                    <th>操作</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.id</td>
+                        <td>@item.userstaffno</td>
+                        <td>@item.username</td>
+                        <td>@(Dyd.BaseService.Monitor.Core.EnumUtils<XXF.BaseService.Monitor.SystemRuntime.EnumUserRole>.GetText((XXF.BaseService.Monitor.SystemRuntime.EnumUserRole)item.userrole))</td>
+                        <td>@item.usercreatetime</td>
+                        <td>@item.usertel</td>
+                        <td>@item.useremail</td>
+                        <td>@item.lastsenderrortime</td>
+                        <td>@item.errorsendintervaltime</td>
+                        <td>
+                            <a href="@Url.Action("Add", "User", new { userid = @item.id })">修改</a>
+                            <input type="button" value="删除" onclick="Delete('@item.id')" />
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div class="total pt10">
+            </div>
+        </div>
+    </div>
+</div>

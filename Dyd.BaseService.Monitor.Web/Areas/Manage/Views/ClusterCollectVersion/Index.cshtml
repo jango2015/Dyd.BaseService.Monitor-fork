@@ -1,0 +1,68 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.PlatformManage.Model.tb_cluster_collect_version_model>
+@{
+    ViewBag.Title = "DLL版本";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+<script>
+    function Delete(id)
+    {
+        if (confirm("确定删除吗？"))
+        {
+            $.ajax({
+                url: '@Url.Action("Delete","ClusterCollectVersion")',
+                type: "post",
+                data: {
+                    id : id
+                },
+                success: function (data) {
+                    if (data.code > 0) {
+                        alert("成功！");
+                        window.location = window.location;
+                    }
+                    else {
+                        alert(data.msg);
+                    }
+                }
+            })
+        }
+    }
+
+    function EnableThis(id) {
+        if (confirm("确定启用当前版本吗？")) {
+            $.ajax({
+                url: '@Url.Action("EnableID","ClusterCollectVersion")',
+                type: "post",
+                data: {
+                    id: id
+                },
+                success: function (data) {
+                    if (data.code > 0) {
+                        alert("成功！");
+                        window.location = window.location;
+                    }
+                    else {
+                        alert(data.msg);
+                    }
+                }
+            })
+        }
+    }
+</script>
+<div class="head">
+    <div class="title">
+        DLL版本
+    </div>
+</div>
+<div class="orderlist m10 myorder">
+    <a href="@Url.Action("add", "ClusterCollectVersion")" class="btn1">新增</a>
+    <div class="tab_cont">
+        <div class="List">
+            @Html.Partial("List", Model);
+        </div>
+    </div>
+</div>

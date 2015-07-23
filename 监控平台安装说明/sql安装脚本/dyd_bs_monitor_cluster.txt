@@ -1,0 +1,152 @@
+USE [dyd_bs_monitor_cluster]
+GO
+/****** Object:  Table [dbo].[tb_performance_dayreport]    Script Date: 05/21/2015 17:09:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tb_performance_dayreport](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[date] [date] NOT NULL,
+	[serverid] [int] NOT NULL,
+	[avgcpu] [decimal](10, 2) NOT NULL,
+	[maxcpu] [decimal](10, 2) NOT NULL,
+	[mincpu] [decimal](10, 2) NOT NULL,
+	[avgmemory] [decimal](10, 2) NOT NULL,
+	[maxmemory] [decimal](10, 2) NOT NULL,
+	[minmemory] [decimal](10, 2) NOT NULL,
+	[avgnetworkupload] [decimal](10, 2) NOT NULL,
+	[maxnetworkupload] [decimal](10, 2) NOT NULL,
+	[minnetworkupload] [decimal](10, 2) NOT NULL,
+	[avgnetworkdownload] [decimal](10, 2) NOT NULL,
+	[maxnetworkdownload] [decimal](10, 2) NOT NULL,
+	[minnetworkdownload] [decimal](10, 2) NOT NULL,
+	[avgioread] [decimal](10, 2) NOT NULL,
+	[maxioread] [decimal](10, 2) NOT NULL,
+	[minioread] [decimal](10, 2) NOT NULL,
+	[avgiowrite] [decimal](10, 2) NOT NULL,
+	[maxiowrite] [decimal](10, 2) NOT NULL,
+	[miniowrite] [decimal](10, 2) NOT NULL,
+	[avgiisrequest] [decimal](10, 2) NOT NULL,
+	[maxiisrequest] [decimal](10, 2) NOT NULL,
+	[miniisrequest] [decimal](10, 2) NOT NULL,
+	[count] [int] NOT NULL,
+	[lastmaxid] [int] NOT NULL,
+	[lastupdatetime] [datetime] NOT NULL
+) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_tb_performance_dayreport_date] ON [dbo].[tb_performance_dayreport] 
+(
+	[date] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_tb_performance_dayreport_serverid] ON [dbo].[tb_performance_dayreport] 
+(
+	[serverid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'日期' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_performance_dayreport', @level2type=N'COLUMN',@level2name=N'date'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'服务器id' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_performance_dayreport', @level2type=N'COLUMN',@level2name=N'serverid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'平均cpu' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_performance_dayreport', @level2type=N'COLUMN',@level2name=N'avgcpu'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'最大cpu' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_performance_dayreport', @level2type=N'COLUMN',@level2name=N'maxcpu'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'写磁盘' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_performance_dayreport', @level2type=N'COLUMN',@level2name=N'miniowrite'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'上次扫描最大id' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_performance_dayreport', @level2type=N'COLUMN',@level2name=N'lastmaxid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'上次扫描时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_performance_dayreport', @level2type=N'COLUMN',@level2name=N'lastupdatetime'
+GO
+/****** Object:  Table [dbo].[tb_performance_collect]    Script Date: 05/21/2015 17:09:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tb_performance_collect](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[serverid] [int] NOT NULL,
+	[cpu] [decimal](15, 2) NOT NULL,
+	[memory] [decimal](15, 2) NOT NULL,
+	[networkupload] [decimal](15, 2) NOT NULL,
+	[networkdownload] [decimal](15, 2) NOT NULL,
+	[ioread] [decimal](15, 2) NOT NULL,
+	[iowrite] [decimal](15, 2) NOT NULL,
+	[iisrequest] [decimal](15, 2) NOT NULL,
+	[createtime] [datetime] NOT NULL
+) ON [PRIMARY]
+GO
+CREATE CLUSTERED INDEX [IX_tb_performance_collect] ON [dbo].[tb_performance_collect] 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'服务器id' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_performance_collect', @level2type=N'COLUMN',@level2name=N'serverid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'cpu信息' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_performance_collect', @level2type=N'COLUMN',@level2name=N'cpu'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'内存字节' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_performance_collect', @level2type=N'COLUMN',@level2name=N'memory'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'网络上传字节' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_performance_collect', @level2type=N'COLUMN',@level2name=N'networkupload'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'网络下载字节' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_performance_collect', @level2type=N'COLUMN',@level2name=N'networkdownload'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'io读字节' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_performance_collect', @level2type=N'COLUMN',@level2name=N'ioread'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'io写字节' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_performance_collect', @level2type=N'COLUMN',@level2name=N'iowrite'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'创建时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_performance_collect', @level2type=N'COLUMN',@level2name=N'createtime'
+GO
+/****** Object:  Table [dbo].[tb_cluster_monitorinfo_snapshot]    Script Date: 05/21/2015 17:09:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tb_cluster_monitorinfo_snapshot](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[serverid] [int] NOT NULL,
+	[monitorinfojson] [varchar](max) NOT NULL,
+	[lastupdatetime] [datetime] NOT NULL,
+	[createtime] [datetime] NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE NONCLUSTERED INDEX [IX_tb_cluster_monitorinfo_snapshot_serverid] ON [dbo].[tb_cluster_monitorinfo_snapshot] 
+(
+	[serverid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tb_cluster_monitorinfo]    Script Date: 05/21/2015 17:09:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tb_cluster_monitorinfo](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[serverid] [int] NOT NULL,
+	[monitorinfojson] [varchar](max) NOT NULL,
+	[lastupdatetime] [datetime] NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE NONCLUSTERED INDEX [IX_tb_cluster_monitorinfo_serverid] ON [dbo].[tb_cluster_monitorinfo] 
+(
+	[serverid] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'服务器id' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_cluster_monitorinfo', @level2type=N'COLUMN',@level2name=N'serverid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'服务器监控得到的各项指标信息' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_cluster_monitorinfo', @level2type=N'COLUMN',@level2name=N'monitorinfojson'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'上次服务器更新时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_cluster_monitorinfo', @level2type=N'COLUMN',@level2name=N'lastupdatetime'
+GO
+/****** Object:  Default [DF_tb_performance_dayreport_count]    Script Date: 05/21/2015 17:09:43 ******/
+ALTER TABLE [dbo].[tb_performance_dayreport] ADD  CONSTRAINT [DF_tb_performance_dayreport_count]  DEFAULT ((0)) FOR [count]
+GO

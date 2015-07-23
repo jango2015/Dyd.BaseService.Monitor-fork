@@ -1,0 +1,55 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.TimeWatch.Model.tb_sqlhash_noparam_model>
+@{
+    ViewBag.Title = "问题Sql列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Dictionary<int, Dyd.BaseService.Monitor.Domain.PlatformManage.Model.timewatchConnModel> dic =
+        ViewBag.TimeWatchConn as Dictionary<int, Dyd.BaseService.Monitor.Domain.PlatformManage.Model.timewatchConnModel>;
+}
+<div class="head">
+    <div class="title">
+        问题Sql列表
+    </div>
+</div>
+<div class="orderlist m10 myorder">
+    @using (Html.BeginForm("index", "SqlHashNoParam", FormMethod.Get, new RouteValueDictionary { { "id", "searchForm" } }))      
+    {
+        <div class="item_list pt10">
+            <div class="item_list">
+                <ul>
+                    <li>
+                        <label>sql哈希码</label>
+                        <input type="text" name="sqlhash"  class="smalltext"  value="@ViewBag.sqlhash" />
+                    </li>
+                    <li>
+                        <label>sql语句</label>
+                        <input type="text" name="sql" value="@ViewBag.sql" />
+                    </li>
+                     <li>
+                        <label>排序</label>
+                        <select name="orderby">
+                            <option value="count desc" @Html.Raw(ViewBag.orderby+""=="count desc"?"selected='selected'":"")>数量降序</option>
+                            <option value="count asc" @Html.Raw(ViewBag.orderby+""=="count asc"?"selected='selected'":"")>数量升序</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label>数据库</label>
+                        <select name="connid">
+                            @foreach (KeyValuePair<int, Dyd.BaseService.Monitor.Domain.PlatformManage.Model.timewatchConnModel> d in dic)
+                            { 
+                                <option value="@d.Key"@Html.Raw(d.Key==ViewBag.Connid?"selected=selected":"") >@d.Value.name</option>
+                            }
+                        </select>
+                        <input type="submit" class="btn1" value="搜索" accesskey="S" />
+                      @*  <a href="@Url.Action("Chart")" class="btn1">查看图表</a>*@
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+    <div class="tab_cont">
+        <div class="List">
+            @Html.Partial("List",Model)
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.Chart.Model.ChartModel>
+@{
+    ViewBag.Title = "URL耗时每日统计图表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Dictionary<int, Dyd.BaseService.Monitor.Domain.PlatformManage.Model.timewatchConnModel> dic =
+        ViewBag.TimeWatchConn as Dictionary<int, Dyd.BaseService.Monitor.Domain.PlatformManage.Model.timewatchConnModel>;
+}
+<div class="head">
+    <div class="title">
+        URL耗时每日统计图表
+    </div>
+</div>
+<div class="orderlist m10 myorder">
+    <div class="item_list pt10">
+        @using (Html.BeginForm("chart", "PerformanceDayReport", FormMethod.Get, new RouteValueDictionary { { "id", "searchForm" } }))      
+        {
+            <div class="item_list">
+                <ul>
+                    <li>
+                        <input type="hidden" id="key" name="key" value="@ViewBag.Key" />
+                        <label>时间</label>
+                        <input type="text" class="text" autocomplete="off"name="FDay" id="FDay" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'1900-01-01',readOnly:true})" value="@ViewBag.Fday" />和
+                        <input type="text" class="text" autocomplete="off"name="Nday" id="Nday" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'1900-01-01',readOnly:true})" value="@ViewBag.Nday" />
+                    </li>
+                    <li class="search">
+                        <input type="submit" class="btn1" value="搜索" accesskey="S" /></li>
+                </ul>
+            </div>
+        }
+    </div>
+    <div class="tab_cont">
+        <div class="ChartList">
+            @Html.Partial("ChartList",Model)
+        </div>
+    </div>
+</div>
+<input type="hidden" id="DataJson" value="@Newtonsoft.Json.JsonConvert.SerializeObject(Model).Replace("\r\n","");" />
+<div id="NameList" class="NameList c"></div>
+<div id="ChartBtn" class="c"></div>
+<div id="chart_wrapper" class="ml10 mt10">
+    <div id="maychart" ></div>
+</div>
+<script src="~/Scripts/Highcharts-4.0.3/js/highcharts.js"></script>
+<script src="~/Scripts/HighChartPack.js"></script>
+<script>
+    $(document).ready(function () {
+        CreateChart();
+    });
+
+    function CreateChart() {
+        var pack = new HighChartPack();
+        var namelist = new Array();
+        namelist.push({ "name": "平均CPU", "value": "avgcpu" });
+        namelist.push({ "name": "最大CPU", "value": "maxcpu" });
+        namelist.push({ "name": "最小CPU", "value": "mincpu" });
+        namelist.push({ "name": "平均内存", "value": "avgmemory" });
+        namelist.push({ "name": "最大内存", "value": "maxmemory" });
+        namelist.push({ "name": "最小内存", "value": "minmemory" });
+        namelist.push({ "name": "平均上传", "value": "avgnetworkupload" });
+        namelist.push({ "name": "最大上传", "value": "maxnetworkupload" });
+        namelist.push({ "name": "最小上传", "value": "minnetworkupload" });
+        namelist.push({ "name": "平均下载", "value": "avgnetworkdownload" });
+        namelist.push({ "name": "最大下载", "value": "maxnetworkdownload" });
+        namelist.push({ "name": "最小下载", "value": "minnetworkdownload" });
+        namelist.push({ "name": "平均磁盘读", "value": "avgioread" });
+        namelist.push({ "name": "最大磁盘读", "value": "maxioread" });
+        namelist.push({ "name": "最小磁盘读", "value": "minioread" });
+        namelist.push({ "name": "平均磁盘写", "value": "avgiowrite" });
+        namelist.push({ "name": "最大磁盘写", "value": "maxiowrite" });
+        namelist.push({ "name": "最小磁盘写", "value": "miniowrite" });
+        namelist.push({ "name": "平均IIS请求", "value": "avgiisrequest" });
+        namelist.push({ "name": "最大IIS请求", "value": "maxiisrequest" });
+        namelist.push({ "name": "最小IIS请求", "value": "miniisrequest" });
+        var namelist = new Array();
+        var catelist = new Array();
+        catelist.push('@ViewBag.Fday');
+        catelist.push('@ViewBag.Nday');
+        var data = $("#DataJson").val();
+        pack.Init(namelist, data, catelist, "性能监控统计图表");
+    }
+</script>

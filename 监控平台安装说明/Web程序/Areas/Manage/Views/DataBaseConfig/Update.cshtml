@@ -1,0 +1,79 @@
+﻿@using Dyd.BaseService.Monitor.Domain.PlatformManage.Model;
+@model tb_database_config_model
+@{
+    ViewBag.Title = "新增";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    function sub() {
+        if ($("#dblocalname").val() == "") {
+            alert("请填写名称！")
+            return false;
+        }
+        var ip = $("#dbserver").val();
+        if (ip == "") {
+            alert("请填写IP！");
+            return false;
+        }
+        else {
+            //ip地址
+            var exp = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
+            var reg = ip.match(exp);
+            if (reg == null) {
+                alert("IP地址不合法！");
+                return false;
+            }
+        }
+        if ($("#dbname").val() == "") {
+            alert("请填写数据库名称！");
+            return false;
+        }
+        if ($("#dbuser").val() == "") {
+            alert("请填写数据库用户！");
+            return false;
+        }
+        if ($("#dbpass").val() == "") {
+            alert("请填写密码！");
+            return false;
+        }
+    }
+</script>
+<div class="head">
+    <div class="title">
+        新增任务
+    </div>
+</div>
+<div>
+    @using (Html.BeginForm("Update", "DataBaseConfig", FormMethod.Post, new { enctype = "multipart/form-data", @onsubmit = "return sub()" }))
+    {
+    <ul class="mydetail">
+        <li>
+            <label>名称</label><input class="mylongtext" type="text" id="dblocalname" name="dblocalname" value="@Model.dblocalname" />
+        </li>
+        <li>
+            <label>IP</label><input type="text" id="dbserver" name="dbserver" value="@Model.dbserver" />
+        </li>
+        <li>
+            <label>数据库名</label><input type="text" id="dbname" name="dbname" value="@Model.dbname" />
+        </li>
+        <li>
+            <label>数据库用户</label><input type="text" id="dbuser" name="dbuser" value="@Model.dbuser" />
+        </li>
+        <li>
+            <label>数据库密码</label><input type="text" id="dbpass" name="dbpass" value="@Model.dbpass" />
+        </li>
+        <li>
+            <label>数据库类型</label>
+            <select id="dbtype" name="dbtype">
+                @foreach (var o in (Dyd.BaseService.Monitor.Core.EnumUtils<XXF.BaseService.Monitor.SystemRuntime.DataBaseType>.GetAllEnumsOfList2()))
+                {
+                    <option value="@o.Value" @Html.Raw(Model.dbtype==Convert.ToByte(o.Value)?"selected=selected":"") >@o.Text</option>
+                }
+            </select>
+        </li>
+        <li>
+            <input type="submit" class="btn1" value="提交" />@Html.ValidationMessage("Error")
+        </li>
+    </ul>
+    }
+</div>

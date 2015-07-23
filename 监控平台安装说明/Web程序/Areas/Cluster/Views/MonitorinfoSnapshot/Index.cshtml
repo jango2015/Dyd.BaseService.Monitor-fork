@@ -1,0 +1,44 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.Cluster.Model.tb_cluster_monitorinfo_snapshot_model>
+@{
+    ViewBag.Title = "服务器监控快照";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="head">
+    <div class="title">
+        服务器监控快照
+    </div>
+</div>
+<div class="orderlist m10 myorder">
+    @using (Html.BeginForm("index", "MonitorInfoSnapshot", FormMethod.Get, new RouteValueDictionary { { "id", "searchForm" } }))      
+    {
+        <div class="item_list pt10">
+            <div class="item_list">
+                <ul>
+                    <li>
+                        <label>服务器IP/Name</label>
+                        <input type="text" name="keyword"  class="smalltext"  value="@ViewBag.keyword" />
+                    </li>
+                     <li>
+                        <label>服务器ID</label>
+                        <input type="text" name="serverid"  class="smalltext"  value="@ViewBag.serverid" />
+                    </li>
+                      <li>
+                        <label>监控内容高亮</label>
+                        <input type="text" name="monitorjsonkeyword"  class="smalltext"  value="@ViewBag.monitorjsonkeyword" />
+                    </li>
+                    <li>
+                        <label>监控时间</label><input type="text"  class="smalltext"  name="timebegin" value="@ViewBag.timebegin" /> - <input type="text"  class="smalltext"  name="timeend" value="@ViewBag.timeend" />（只保留最近一个月快照）
+                    </li>
+                    <li class="search">
+                        <input type="submit" class="btn1" value="搜索" accesskey="S" /></li>
+                </ul>
+            </div>
+        </div>
+    }
+    <div class="tab_cont">
+        <div class="List">
+            @Html.Partial("List",Model)
+        </div>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Dyd.BaseService.Monitor.Core;
+using Dyd.BaseService.Monitor.Domain.PlatformManage.Dal;
+using Dyd.BaseService.Monitor.Domain.PlatformManage.Model;
+using XXF.BaseService.Monitor;
+using XXF.BaseService.Monitor.SystemRuntime;
+using XXF.ProjectTool;
+using XXF.Extensions;
+
+namespace Dyd.BaseService.Monitor.Test
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //List<CollectConfig> cc = new List<CollectConfig>();
+            //cc.Add(new CollectConfig("cpu", "Processor", "% Processor Time", "_Total"));
+            //cc.Add(new CollectConfig("内存", "Memory", "Available MBytes", ""));
+            //cc.Add(new CollectConfig("网络发送/s", "Network Interface", "Bytes Sent/sec", "本地连接* 14"));
+            //cc.Add(new CollectConfig("网络下载/s", "Network Interface", "Bytes Received/sec", "本地连接* 14"));
+            //cc.Add(new CollectConfig("物理磁盘读字节/s", "PhysicalDisk", "Disk Read Bytes/sec", "_Total"));
+            //cc.Add(new CollectConfig("物理磁盘写字节/s", "PhysicalDisk", "Disk Write Bytes/sec", "_Total"));
+            //cc.Add(new CollectConfig("IIS请求/s", "Web Service", "Current Connections", "_Total"));
+            //var str = new XXF.Serialization.JsonHelper().Serializer(cc);
+
+            //SqlHelper.ExcuteSql("server=192.168.17.201;Initial Catalog=dyd_bs_monitor_platform_manage;User ID=sa;Password=Xx~!@#;", (c) =>
+            //{
+            //    tb_cluster_collect_version_dal versiondal = new tb_cluster_collect_version_dal();
+            //    versiondal.Add(c, new tb_cluster_collect_version_model()
+            //    {
+            //        //id = 6,
+            //        versionnum = 1,
+            //        versioncreatetime = DateTime.Now,
+            //        zipfile = System.IO.File.ReadAllBytes(@"E:\collect.rar"),
+            //        zipfilename = "collect.rar"
+            //    });
+            //});
+
+            string text = @"2B";
+            string hash = text.GetHashCode()+"";
+            var a = 1;
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string msg = @"insert into tb_log(sqlservercreatetime,logcreatetime,logtype,projectname,logtag,msg)
+										   values(getdate(),@logcreatetime,@logtype,@projectname,@logtag,@msg)".SubString2(900);
+            string logtag = (msg.GetHashCode()+"");
+            TimeWatchHelper.AddTimeWatchLog(new TimeWatchLogInfo()
+            {
+                fromip = "192.168.17.54",
+                logcreatetime = DateTime.Now,
+                logtag = logtag,
+                logtype=(int)EnumTimeWatchLogType.SqlCmd, msg=msg, projectname="test", remark="sadfasdfsdfas",  sqlip="192.168.17.201",time=1});
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string tag = @"token:aaaa,";
+            string url = @"/common/config";
+            TimeWatchHelper.AddTimeWatchApiLog(new TimeWatchLogApiInfo()
+            {
+                fromip = "192.168.17.54",
+                logcreatetime = DateTime.Now,
+                url = url,
+                msg = "",
+                projectname = "test",
+                time = 1,
+                 tag=tag
+            });
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            UnityLogHelper.AddCommonLog(new CommonLogInfo()
+            {
+                logcreatetime = DateTime.Now,
+                msg = "这是测试日志",
+                projectname = "test",
+                logtag = @"/common/config",
+                logtype=(int)EnumLogType.CommonLog
+            });
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            UnityLogHelper.AddErrorLog(new ErrorLogInfo()
+            {
+                logcreatetime = DateTime.Now,
+                msg = "这是测试错误日志",
+                projectname = "test",
+                logtag = @"/common/config",
+                logtype = (int)EnumLogType.CommonError,
+                developer="0",
+                remark="",
+                tracestack=""
+            });
+        }
+    }
+}

@@ -1,0 +1,28 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.Chart.Model.ChartModel>
+
+<table>
+    <tr>
+        <th width="3%"><input type="checkbox" id="CheckAll" onclick="CheckAll()" />全选</th>
+        <th width="10%">ServerId</th>
+        <th width="10%">@ViewBag.Fday</th>
+        <th width="10%">@ViewBag.Nday</th>
+        <th width="10%">变化值</th>
+        <th width="10%">百分比</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td><input type="checkbox" name="GroupList" value="@item.Tkey" /></td>
+            <td><a href="@Url.Action("Chart", "PerformanceCollect", new { key = item.Tkey.Replace("_", "/"), type = 2 })">@item.Tkey</a></td>
+            <td>@item.Avalue</td>
+            <td>@item.Bvalue</td>
+            <td @Html.Raw(item.UpDown==1?"style='color:red'":"")>@item.AsubB</td>
+            <td>@(item.Avalue==0?"无法计算":(item.AsubB/item.Avalue*100).ToString("0.00"))</td>
+        </tr>
+    }
+</table>
+<div class="total pt10">
+    <div class="fl">共<em>@Model.TotalPageCount</em>页<em>@Model.TotalItemCount</em>条记录，当前为第<em>@Model.CurrentPageIndex</em>页</div>
+    @Html.Pager(Model,new PagerOptions{PageIndexParameterName = "pageindex",ShowPageIndexBox = true,PageIndexBoxType = PageIndexBoxType.TextBox, CssClass="mvcPager"})
+</div>

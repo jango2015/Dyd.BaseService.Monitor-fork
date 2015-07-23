@@ -1,0 +1,56 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.UnityLog.Model.tb_log_model>
+@{
+    ViewBag.Title = "日志";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="head">
+    <div class="title">
+        统一日志
+    </div>
+</div>
+<div class="orderlist m10 myorder">
+    @*@using (Ajax.BeginForm("index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "List", HttpMethod = "post", InsertionMode = InsertionMode.Replace }, new RouteValueDictionary { { "id", "searchForm" } }))*@
+    @using (Html.BeginForm("index", "Log", FormMethod.Get, new RouteValueDictionary { { "id", "searchForm" } }))      
+    {
+        <div class="item_list pt10">
+            <div class="item_list">
+                <ul>
+                    <li>
+                        <label>时间</label><input type="text" class="text midtext" style="width:150px;" name="timebegin" value="@ViewBag.timebegin.ToString("yyyy-MM-dd HH:mm:ss")" />-<input type="text" class="text midtext"  style="width:150px;" name="timeend" value="@ViewBag.timeend.ToString("yyyy-MM-dd HH:mm:ss")" />(不支持跨月查询)
+                    </li>
+                    <li>
+                        <label>ID</label>
+                        <input type="text" name="id" value="@ViewBag.id" />
+                    </li>
+                    <li>
+                        <label>日志信息</label>
+                        <input type="text" name="keyword" value="@ViewBag.keyword" />
+                    </li>
+                     <li>
+                        <label>项目名称</label><input type="text" class="text" name="projectname" value="@ViewBag.projectname" />
+                    </li>
+                    <li>
+                        <label>日志类型</label>
+                        <select name="logtype">
+                            <option value="-1">选择</option>
+                            @foreach (var o in Dyd.BaseService.Monitor.Core.EnumUtils<XXF.BaseService.Monitor.SystemRuntime.EnumLogType>.GetAllEnumsOfList2())
+                            {
+                                <option value="@o.Value" @(ViewBag.logtype+""==o.Value?"selected='selected'":"")>@o.Text</option>
+                            }
+                        </select>
+                    </li>
+                   
+
+                    <li class="search">
+                        <input type="submit" class="btn1" value="搜索" accesskey="S" /></li>
+                </ul>
+            </div>
+        </div>
+    }
+    <div class="tab_cont">
+        <div class="List">
+            @Html.Partial("List",Model)
+        </div>
+    </div>
+</div>

@@ -1,0 +1,223 @@
+USE [dyd_bs_monitor_timewatch_customer]
+GO
+/****** Object:  Table [dbo].[tb_timewatchlog_sql_dayreport]    Script Date: 05/21/2015 17:12:38 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tb_timewatchlog_sql_dayreport](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[sqlhash] [varchar](50) NOT NULL,
+	[date] [date] NOT NULL,
+	[avgtime] [float] NOT NULL,
+	[maxtime] [float] NOT NULL,
+	[mintime] [float] NOT NULL,
+	[lastmaxid] [int] NOT NULL,
+	[lastupdatetime] [datetime] NOT NULL,
+	[count] [int] NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE CLUSTERED INDEX [IX_tb_timewatchlog_sql_dayreport_sqlhash] ON [dbo].[tb_timewatchlog_sql_dayreport] 
+(
+	[sqlhash] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_tb_timewatchlog_sql_dayreport_date] ON [dbo].[tb_timewatchlog_sql_dayreport] 
+(
+	[date] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'sql 哈希' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog_sql_dayreport', @level2type=N'COLUMN',@level2name=N'sqlhash'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'日期' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog_sql_dayreport', @level2type=N'COLUMN',@level2name=N'date'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'平均耗时' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog_sql_dayreport', @level2type=N'COLUMN',@level2name=N'avgtime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'最大耗时' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog_sql_dayreport', @level2type=N'COLUMN',@level2name=N'maxtime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'最小耗时' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog_sql_dayreport', @level2type=N'COLUMN',@level2name=N'mintime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'上次扫描最大id' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog_sql_dayreport', @level2type=N'COLUMN',@level2name=N'lastmaxid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'上次扫描更新时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog_sql_dayreport', @level2type=N'COLUMN',@level2name=N'lastupdatetime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'调用次数' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog_sql_dayreport', @level2type=N'COLUMN',@level2name=N'count'
+GO
+/****** Object:  Table [dbo].[tb_timewatchlog_api_dayreport]    Script Date: 05/21/2015 17:12:38 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tb_timewatchlog_api_dayreport](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[url] [nvarchar](100) NOT NULL,
+	[date] [date] NOT NULL,
+	[avgtime] [float] NOT NULL,
+	[maxtime] [float] NOT NULL,
+	[mintime] [float] NOT NULL,
+	[lastmaxid] [int] NOT NULL,
+	[lastupdatetime] [datetime] NOT NULL,
+	[count] [int] NOT NULL
+) ON [PRIMARY]
+GO
+CREATE CLUSTERED INDEX [IX_tb_timewatchlog_api_dayreport_date] ON [dbo].[tb_timewatchlog_api_dayreport] 
+(
+	[date] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_tb_timewatchlog_api_dayreport_url] ON [dbo].[tb_timewatchlog_api_dayreport] 
+(
+	[url] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'接口api url' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog_api_dayreport', @level2type=N'COLUMN',@level2name=N'url'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'日期' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog_api_dayreport', @level2type=N'COLUMN',@level2name=N'date'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'平均耗时' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog_api_dayreport', @level2type=N'COLUMN',@level2name=N'avgtime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'最大耗时' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog_api_dayreport', @level2type=N'COLUMN',@level2name=N'maxtime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'最小耗时' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog_api_dayreport', @level2type=N'COLUMN',@level2name=N'mintime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'上一次扫描最大id' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog_api_dayreport', @level2type=N'COLUMN',@level2name=N'lastmaxid'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'上次扫描更新时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog_api_dayreport', @level2type=N'COLUMN',@level2name=N'lastupdatetime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'调用次数' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog_api_dayreport', @level2type=N'COLUMN',@level2name=N'count'
+GO
+/****** Object:  Table [dbo].[tb_timewatchlog_api]    Script Date: 05/21/2015 17:12:38 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tb_timewatchlog_api](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[sqlservercreatetime] [datetime] NOT NULL,
+	[logcreatetime] [datetime] NOT NULL,
+	[time] [float] NOT NULL,
+	[projectname] [varchar](20) NOT NULL,
+	[url] [nvarchar](100) NOT NULL,
+	[msg] [nvarchar](1000) NOT NULL,
+	[fromip] [varchar](25) NOT NULL,
+	[tag] [nvarchar](1000) NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE CLUSTERED INDEX [IX_tb_timewatchlog_api] ON [dbo].[tb_timewatchlog_api] 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tb_timewatchlog]    Script Date: 05/21/2015 17:12:38 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tb_timewatchlog](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[sqlservercreatetime] [datetime] NOT NULL,
+	[logcreatetime] [datetime] NOT NULL,
+	[time] [float] NOT NULL,
+	[projectname] [varchar](20) NOT NULL,
+	[logtype] [tinyint] NOT NULL,
+	[logtag] [nvarchar](100) NOT NULL,
+	[msg] [nvarchar](1000) NOT NULL,
+	[fromip] [varchar](25) NOT NULL,
+	[sqlip] [varchar](25) NOT NULL,
+	[remark] [nvarchar](1000) NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE CLUSTERED INDEX [IX_tb_timewatchlog] ON [dbo].[tb_timewatchlog] 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'数据库本地创建时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog', @level2type=N'COLUMN',@level2name=N'sqlservercreatetime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'日志创建时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog', @level2type=N'COLUMN',@level2name=N'logcreatetime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'耗时' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog', @level2type=N'COLUMN',@level2name=N'time'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'项目名称' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog', @level2type=N'COLUMN',@level2name=N'projectname'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'耗时日志类型：普通日志=0，api接口日志=1，sql日志=2' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog', @level2type=N'COLUMN',@level2name=N'logtype'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'日志标识,sql类型则为sql哈希,api类型则为url' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog', @level2type=N'COLUMN',@level2name=N'logtag'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'当前信息' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog', @level2type=N'COLUMN',@level2name=N'msg'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'来源ip(代码执行ip)' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog', @level2type=N'COLUMN',@level2name=N'fromip'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'sqlip地址' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog', @level2type=N'COLUMN',@level2name=N'sqlip'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'其他记录标记信息' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_timewatchlog', @level2type=N'COLUMN',@level2name=N'remark'
+GO
+/****** Object:  Table [dbo].[tb_sqlhash_noparam]    Script Date: 05/21/2015 17:12:38 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tb_sqlhash_noparam](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[sqlhash] [varchar](50) NOT NULL,
+	[sql] [varchar](1000) NOT NULL,
+	[count] [int] NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [IX_tb_sqlhash_noparam_sqlhash] ON [dbo].[tb_sqlhash_noparam] 
+(
+	[sqlhash] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tb_sqlhash_consult]    Script Date: 05/21/2015 17:12:38 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tb_sqlhash_consult](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[sqlhash] [varchar](50) NOT NULL,
+	[sql] [varchar](1000) NOT NULL,
+	[count] [int] NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [IX_tb_sqlhash_consult_sqlhash] ON [dbo].[tb_sqlhash_consult] 
+(
+	[sqlhash] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'sql 哈希' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_sqlhash_consult', @level2type=N'COLUMN',@level2name=N'sqlhash'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'sql 代码' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_sqlhash_consult', @level2type=N'COLUMN',@level2name=N'sql'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'调用次数' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_sqlhash_consult', @level2type=N'COLUMN',@level2name=N'count'
+GO
+/****** Object:  Default [DF_tb_timewatchlog_api_sqlservercreatetime]    Script Date: 05/21/2015 17:12:38 ******/
+ALTER TABLE [dbo].[tb_timewatchlog_api] ADD  CONSTRAINT [DF_tb_timewatchlog_api_sqlservercreatetime]  DEFAULT (getdate()) FOR [sqlservercreatetime]
+GO
+/****** Object:  Default [DF_tb_timewatchlog_api_dayreport_count]    Script Date: 05/21/2015 17:12:38 ******/
+ALTER TABLE [dbo].[tb_timewatchlog_api_dayreport] ADD  CONSTRAINT [DF_tb_timewatchlog_api_dayreport_count]  DEFAULT ((0)) FOR [count]
+GO
+/****** Object:  Default [DF_tb_timewatchlog_sql_dayreport_count]    Script Date: 05/21/2015 17:12:38 ******/
+ALTER TABLE [dbo].[tb_timewatchlog_sql_dayreport] ADD  CONSTRAINT [DF_tb_timewatchlog_sql_dayreport_count]  DEFAULT ((0)) FOR [count]
+GO

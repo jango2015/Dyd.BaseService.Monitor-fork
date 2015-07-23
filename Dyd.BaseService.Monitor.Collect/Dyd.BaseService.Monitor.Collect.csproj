@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{15A2FED2-5143-4D31-ABEF-016ED7082CC5}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Dyd.BaseService.Monitor.Collect</RootNamespace>
+    <AssemblyName>Dyd.BaseService.Monitor.Collect</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="XXF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\引用\XXF.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BackgroundTasks\MonitorCollectBackgroundTask.cs" />
+    <Compile Include="BackgroundTasks\PerformanceCollectBackgroundTask.cs" />
+    <Compile Include="BackgroundTasks\OnLineTimeBackgroundTask.cs" />
+    <Compile Include="CollectMonitorDll.cs" />
+    <Compile Include="GlobalConfig.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CollectTasks\DiskInfoCollectTask.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CollectTasks\ICollect.cs" />
+    <Compile Include="CollectTasks\MemoryPercentCollectTask.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CollectTasks\PerformanceCounterCollectTask.cs" />
+    <Compile Include="Tool\ConvertHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dyd.BaseService.Monitor.Core\Dyd.BaseService.Monitor.Core.csproj">
+      <Project>{b6faddc3-3382-4bd9-8913-eeab1ade1dbd}</Project>
+      <Name>Dyd.BaseService.Monitor.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dyd.BaseService.Monitor.Domain\Dyd.BaseService.Monitor.Domain.csproj">
+      <Project>{e52a7463-fc9b-4e1a-8744-d52e686d2947}</Project>
+      <Name>Dyd.BaseService.Monitor.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XXF.BaseService.Monitor\XXF.BaseService.Monitor.csproj">
+      <Project>{9b48a904-f055-4f20-ae74-8c294f5dcda2}</Project>
+      <Name>XXF.BaseService.Monitor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,49 @@
+﻿@using Dyd.BaseService.Monitor.Domain.PlatformManage.Model;
+@model tb_keyvalue_config_model
+@{
+    ViewBag.Title = "修改";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    function sub() {
+        if ($("#key").val() == "") {
+            alert("请填写Key！")
+            return false;
+        }
+        if ($("#value").val() == "") {
+            alert("请填写Value！");
+            return false;
+        }
+        if ($("#remark").val() == "") {
+            alert("请填写备注！");
+            return false;
+        }
+    }
+</script>
+<div class="head">
+    <div class="title">
+        新增任务
+    </div>
+</div>
+<div>
+    @using (Html.BeginForm("Update", "Config", FormMethod.Post, new { enctype = "multipart/form-data", @onsubmit = "return sub()" }))
+    {
+        <input type="hidden" name="id" value="@Model.id" />
+        <ul class="mydetail">
+            <li>
+                <label>Key</label><input type="text" id="key" name="key" value="@Model.key" />
+            </li>
+            <li>
+                <label>Value</label>
+                <textarea id="value" name="value" style="height: 500px; width:700px;">@Model.value</textarea>
+            </li>
+            <li>
+                <label>备注</label>
+                <textarea id="remark" name="remark" style="height: 200px">@Model.remark</textarea>
+            </li>
+            <li>
+                <input type="submit" class="btn1" value="提交" />@Html.ValidationMessage("Error")
+            </li>
+        </ul>
+    }
+</div>

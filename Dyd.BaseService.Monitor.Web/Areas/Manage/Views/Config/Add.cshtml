@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "新增";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    function sub() {
+        if ($("#key").val() == "") {
+            alert("请填写Key！")
+            return false;
+        }
+        if ($("#value").val() == "") {
+            alert("请填写Value！");
+            return false;
+        }
+        if ($("#remark").val() == "") {
+            alert("请填写备注！");
+            return false;
+        }
+    }
+</script>
+<div class="head">
+    <div class="title">
+        新增任务
+    </div>
+</div>
+<div>
+    @using (Html.BeginForm("Add", "Config", FormMethod.Post, new { enctype = "multipart/form-data", @onsubmit = "return sub()" }))
+    {
+    <ul class="mydetail">
+        <li>
+            <label>Key</label><input class="mylongtext" type="text" id="key" name="key" />
+        </li>
+        <li>
+            <label>Value</label>
+            <textarea id="value" name="value" style="height: 500px; width:700px;"></textarea>
+        </li>
+        <li>
+            <label>备注</label>
+            <textarea id="remark" name="remark" style="height:200px"></textarea>
+        </li>
+        <li>
+            <input type="submit" class="btn1" value="提交" />@Html.ValidationMessage("Error")
+        </li>
+    </ul>
+    }
+</div>

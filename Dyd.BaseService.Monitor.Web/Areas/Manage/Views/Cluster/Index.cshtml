@@ -1,0 +1,68 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.PlatformManage.Model.tb_cluster_model>
+@{
+    ViewBag.Title = "服务器列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    function Delete(id) {
+        if (confirm("确定删除吗？")) {
+            $.ajax({
+                url: '@Url.Action("Delete","Cluster")',
+                type: "post",
+                data: {
+                    id: id
+                },
+                success: function (data) {
+                    if (data.code > 0) {
+                        alert("成功！");
+                    }
+                    else {
+                        alert(data.msg);
+                    }
+                }
+            })
+        }
+    }
+</script>
+@section Scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+<div class="head">
+    <div class="title">
+        监控服务器列表
+    </div>
+</div>
+<div class="orderlist m10 myorder">
+    @using (Html.BeginForm("index", "Cluster", FormMethod.Get, new RouteValueDictionary { { "id", "searchForm" } }))
+    {
+        <div class="item_list pt10">
+            <div class="item_list">
+                <ul>
+                    <li>
+                        <label>关键字</label>
+                        <input type="text" name="keyword" value="@ViewBag.keyword" />
+                    </li>
+                    <li>
+                        <label>ID</label>
+                        <input type="text" name="id" value="@ViewBag.id" />
+                    </li>
+                   @* <li>
+                        <label>创建时间</label><input type="text" class="text" autocomplete="off"name="CStime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'1900-01-01',readOnly:true})" value="@(string.IsNullOrEmpty(ViewBag.CStime)?"":ViewBag.CStime)" />
+                        至
+                    <input type="text" class="text" autocomplete="off" name="CEtime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'1900-01-01',readOnly:true})" value="@(string.IsNullOrEmpty(ViewBag.CEtime)?"":ViewBag.CEtime)"/>
+                    </li>*@
+                    <li class="search">
+                        <input type="submit" class="btn1" value="搜索" accesskey="S" /></li>
+                </ul>
+            </div>
+        </div>
+    }
+    <a href="@Url.Action("add", "Cluster")" class="btn1">新增</a>
+    <div class="tab_cont">
+        <div class="List">
+            @Html.Partial("List",Model)
+        </div>
+    </div>
+</div>

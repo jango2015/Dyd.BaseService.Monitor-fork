@@ -1,0 +1,508 @@
+【时间】2015-05-19 11:17:31:848
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by id desc) as rownum,* from tb_performance_collect20150519 p right join dyd_bs_monitor_platform_manage.dbo.tb_cluster c on p.serverid=c.id where 1=1 ) A where rownum between 1 and 10
+【原始信息】列名 'id' 不明确。
+多次为 'A' 指定了列 'id'。
+【参数】
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 11:18:02:291
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by id desc) as rownum,* from tb_performance_collect20150519 p right join dyd_bs_monitor_platform_manage.dbo.tb_cluster c on p.serverid=c.id where 1=1 ) A where rownum between 1 and 10
+【原始信息】列名 'id' 不明确。
+多次为 'A' 指定了列 'id'。
+【参数】
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 11:18:03:478
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by id desc) as rownum,* from tb_performance_collect20150519 p right join dyd_bs_monitor_platform_manage.dbo.tb_cluster c on p.serverid=c.id where 1=1 ) A where rownum between 1 and 10
+【原始信息】列名 'id' 不明确。
+多次为 'A' 指定了列 'id'。
+【参数】
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 11:18:46:420
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by id desc) as rownum,p.*,c.serverip from tb_performance_collect20150519 p right join dyd_bs_monitor_platform_manage.dbo.tb_cluster c on p.serverid=c.id where 1=1 ) A where rownum between 1 and 10
+【原始信息】列名 'id' 不明确。
+【参数】
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 11:18:47:807
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by id desc) as rownum,p.*,c.serverip from tb_performance_collect20150519 p right join dyd_bs_monitor_platform_manage.dbo.tb_cluster c on p.serverid=c.id where 1=1 ) A where rownum between 1 and 10
+【原始信息】列名 'id' 不明确。
+【参数】
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 11:23:31:990
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by id desc) as rownum,p.*,c.serverip from tb_performance_collect20150519 p right join dyd_bs_monitor_platform_manage.dbo.tb_cluster c on p.serverid=c.id where 1=1 ) A where rownum between 1 and 10
+【原始信息】列名 'id' 不明确。
+【参数】
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 11:23:38:358
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by id desc) as rownum,p.*,c.serverip from tb_performance_collect20150519 p right join dyd_bs_monitor_platform_manage.dbo.tb_cluster c on p.serverid=c.id where 1=1 ) A where rownum between 1 and 10
+【原始信息】列名 'id' 不明确。
+【参数】
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 14:05:25:860
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by d.avgdate desc) as rownum,d.*,c.serverip from tb_performance_dayreport d right join dyd_bs_monitor_platform_manage.dbo.tb_cluster c on d.serverid=c.id  where 1=1  and d.date>=@dtimebegin  and d.date<=@timeend ) A where rownum between 1 and 10
+【原始信息】列名 'avgdate' 无效。
+【参数】[serverip:][serverid:][timebegin:2015-05-09][timeend:2015-05-19][orderby:date][datatype:avg]
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 14:05:45:882
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by d.avgdate desc) as rownum,d.*,c.serverip from tb_performance_dayreport d right join dyd_bs_monitor_platform_manage.dbo.tb_cluster c on d.serverid=c.id  where 1=1  and d.date>=@dtimebegin  and d.date<=@timeend ) A where rownum between 1 and 10
+【原始信息】列名 'avgdate' 无效。
+【参数】[serverip:][serverid:][timebegin:2015-05-09][timeend:2015-05-19][orderby:date][datatype:avg]
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 14:05:52:993
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by d.avgdate desc) as rownum,d.*,c.serverip from tb_performance_dayreport d right join dyd_bs_monitor_platform_manage.dbo.tb_cluster c on d.serverid=c.id  where 1=1  and d.date>=@dtimebegin  and d.date<=@timeend ) A where rownum between 1 and 10
+【原始信息】列名 'avgdate' 无效。
+【参数】[serverip:][serverid:][timebegin:2015-05-09][timeend:2015-05-19][orderby:date][datatype:avg]
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 15:20:38:758
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select count(1) from tb_sqlhash_noparam where 1=1  and (sql like '%'+@sqlcontent+'%') 
+【原始信息】必须声明标量变量 "@sqlcontent"。
+【参数】[sqlhash:][sql:tborder_main_201505][connid:4]
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   在 XXF.Db.DbConnSql.<>c__DisplayClass4.<ExecuteScalar>b__3() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 166
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 15:25:02:342
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by ) as rownum,* from tb_sqlhash_noparam where 1=1  and (sql like '%'+@sqlcontent+'%') ) A where rownum between 1 and 10
+【原始信息】')' 附近有语法错误。
+【参数】[sqlhash:][sql:tborder_main_201505][connid:4]
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 15:25:08:979
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by ) as rownum,* from tb_sqlhash_noparam where 1=1  and sqlhash = @sqlhash ) A where rownum between 1 and 10
+【原始信息】')' 附近有语法错误。
+【参数】[sqlhash:2125813490][sql:][connid:4]
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 16:16:53:681
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by d.avgtime desc) as rownum,* from tb_timewatchlog_sql_dayreport d left join tb_sqlhash_consult s on d.sqlhash=s.sqlhash  where 1=1  and d.date>=@timebegin  and d.date<=@timeend ) A where rownum between 1 and 10
+【原始信息】多次为 'A' 指定了列 'id'。
+【参数】
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 16:18:49:138
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by d.avgtime desc) as rownum,d.*,c.sql from tb_timewatchlog_sql_dayreport d left join tb_sqlhash_consult s on d.sqlhash=s.sqlhash  where 1=1  and d.date>=@timebegin  and d.date<=@timeend ) A where rownum between 1 and 10
+【原始信息】无法绑定由多个部分组成的标识符 "c.sql"。
+【参数】
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 17:37:18:528
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select count(1) from tb_timewatchlog00010101 where 1=1 
+【原始信息】对象名 'tb_timewatchlog00010101' 无效。
+【参数】[day:2015-05-14][connid:4]
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   在 XXF.Db.DbConnSql.<>c__DisplayClass4.<ExecuteScalar>b__3() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 166
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 17:38:08:223
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select count(1) from tb_timewatchlog00010101 where 1=1 
+【原始信息】对象名 'tb_timewatchlog00010101' 无效。
+【参数】[day:2015-05-14][connid:4]
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   在 XXF.Db.DbConnSql.<>c__DisplayClass4.<ExecuteScalar>b__3() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 166
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 17:43:07:100
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select count(1) from tb_timewatchlog00010101 where 1=1 
+【原始信息】对象名 'tb_timewatchlog00010101' 无效。
+【参数】[timebegin:2015-05-18 ][timeend:2015-05-19 22:40:16][timewatchmin:][timewatchmax:][projectname:][logtype:-1][fromip:][sqlip:][connid:4]
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   在 XXF.Db.DbConnSql.<>c__DisplayClass4.<ExecuteScalar>b__3() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 166
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 18:27:17:899
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by ) as rownum,* from tb_timewatchlog20150512 where 1=1  and sqlservercreatetime>=@dtimebegin and sqlservercreatetime<=@dtimeend and logtype=@logtype) A where rownum between 1 and 10
+【原始信息】')' 附近有语法错误。
+【参数】[timebegin:2015-05-12][timeend:2015-05-12 18:22:07][timewatchmin:][timewatchmax:][projectname:][logtype:2][logtag:][fromip:][sqlip:][orderby:time asc][connid:4]
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 18:27:48:802
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by ) as rownum,* from tb_timewatchlog20150512 where 1=1  and sqlservercreatetime>=@dtimebegin and sqlservercreatetime<=@dtimeend and logtype=@logtype) A where rownum between 1 and 10
+【原始信息】')' 附近有语法错误。
+【参数】[timebegin:2015-05-12][timeend:2015-05-12 18:22:07][timewatchmin:][timewatchmax:][projectname:][logtype:2][logtag:][fromip:][sqlip:][orderby:time asc][connid:4]
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-19 18:28:41:400
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select * from (select ROW_NUMBER() over(order by ) as rownum,* from tb_timewatchlog20150512 where 1=1  and sqlservercreatetime>=@dtimebegin and sqlservercreatetime<=@dtimeend and logtype=@logtype) A where rownum between 1 and 10
+【原始信息】')' 附近有语法错误。
+【参数】[timebegin:2015-05-12][timeend:2015-05-12 18:22:07][timewatchmin:][timewatchmax:][projectname:][logtype:2][logtag:][fromip:][sqlip:][orderby:time asc][connid:4]
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 XXF.Db.DbConnSql.<>c__DisplayClassd.<SqlToDataSet>b__c() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 315
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************

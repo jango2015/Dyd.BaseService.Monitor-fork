@@ -1,0 +1,58 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.Cluster.Model.tb_performance_dayreport_model>
+<style>
+     tr b {
+        color:black;
+    }
+    tr .order{
+        color:red;
+    }
+   
+</style>
+
+<table>
+    <tr>
+        <th>日期</th>
+        <th width="12%">IP[id]</th>
+        <th>CPU(%)[avg,max,min]</th>
+        <th>可用内存(M)[avg,max,min]</th>
+        <th>上传流量(Byte)[avg,max,min]</th>
+        <th>下载流量(Byte)[avg,max,min]</th>
+        <th>磁盘读(Byte)[avg,max,min]</th>
+        <th>磁盘写(Byte)[avg,max,min]</th>
+        <th>IIS请求(s)[avg,max,min]</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td title="最后统计id:@item.lastmaxid,最后更新时间:@item.lastupdatetime"><b @Html.Raw(ViewBag.orderby.ToLower()==""?"class='order'":"")>@item.date.Date.ToString("yyyy-MM-dd")</b></td>
+            <td  style="text-align:left"><a href="@Url.Action("Chart", "PerformanceCollect", new { Area="Cluster",serverip=item.serverip,date=item.date.ToString("yyyy-MM-dd"),datatype="avg" })" title="点击查看性能图" target="_blank"><b style="color:blue">@item.servername</b><br />@item.serverip [@item.serverid]</a></td>
+            <td style="text-align:left"><b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="avgcpu"?"class='order'":"")>@item.avgcpu</b>,
+                 <b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="maxcpu"?"class='order'":"")>@item.maxcpu</b>,
+               <b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="mincpu"?"class='order'":"")> @item.mincpu</b></td>
+            <td style="text-align:left"><b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="avgmemory"?"class='order'":"")>@item.avgmemory</b>,
+                <b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="maxmemory"?"class='order'":"")>@item.maxmemory</b>,
+                <b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="minmemory"?"class='order'":"")>@item.minmemory</b></td>
+            <td style="text-align:left"><b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="avgnetworkupload"?"class='order'":"")>@item.avgnetworkupload</b>,
+                <b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="maxnetworkupload"?"class='order'":"")>@item.maxnetworkupload</b>,
+    <b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="minnetworkupload"?"class='order'":"")>@item.minnetworkupload</b></td>
+            <td style="text-align:left"><b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="avgnetworkdownload"?"class='order'":"")>@item.avgnetworkdownload</b>,
+                <b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="maxnetworkdownload"?"class='order'":"")>@item.maxnetworkdownload</b>,
+                <b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="minnetworkdownload"?"class='order'":"")>@item.minnetworkdownload</b></td>
+            <td style="text-align:left"><b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="avgioread"?"class='order'":"")>@item.avgioread</b>,
+                <b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="maxioread"?"class='order'":"")>@item.maxioread</b>,
+    <b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="minioread"?"class='order'":"")>@item.minioread</b></td>
+            <td style="text-align:left"><b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="avgiowrite"?"class='order'":"")>@item.avgiowrite</b>,
+               <b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="maxiowrite"?"class='order'":"")>@item.maxiowrite</b>,
+               <b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="miniowrite"?"class='order'":"")>@item.miniowrite</b></td>
+            <td style="text-align:left"><b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="avgiisrequest"?"class='order'":"")>@item.avgiisrequest</b>,
+                <b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="maxiisrequest"?"class='order'":"")>@item.maxiisrequest</b>,
+                <b @Html.Raw((ViewBag.datatype+ViewBag.orderby).ToLower()=="miniisrequest"?"class='order'":"")>@item.miniisrequest</b></td>
+        </tr>
+    }
+</table>
+<div class="total pt10">
+    <div class="fl">共<em>@Model.TotalPageCount</em>页<em>@Model.TotalItemCount</em>条记录，当前为第<em>@Model.CurrentPageIndex</em>页</div>
+    @Html.Pager(Model,new PagerOptions{PageIndexParameterName = "pageindex",ShowPageIndexBox = true,PageIndexBoxType = PageIndexBoxType.TextBox, CssClass="mvcPager"})
+    @*@Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "pageindex", ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.DropDownList, ShowGoButton = false }, new MvcAjaxOptions { UpdateTargetId = "List", HttpMethod = "Post", DataFormId = "searchForm" }, new { @class = "pager_page" })*@
+</div>

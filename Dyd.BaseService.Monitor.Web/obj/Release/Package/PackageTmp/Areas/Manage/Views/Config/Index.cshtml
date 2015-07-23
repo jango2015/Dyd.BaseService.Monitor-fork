@@ -1,0 +1,62 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.PlatformManage.Model.tb_keyvalue_config_model>
+@{
+    ViewBag.Title = "监控平台配置";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+<script>
+    function Delete(id)
+    {
+        if (confirm("确定删除吗？"))
+        {
+            $.ajax({
+                url: '@Url.Action("Delete","Config")',
+                type: "post",
+                data: {
+                    id : id
+                },
+                success: function (data) {
+                    if (data.code > 0) {
+                        alert("成功！");
+                        window.location = window.location;
+                    }
+                    else {
+                        alert(data.msg);
+                    }
+                }
+            })
+        }
+    }
+</script>
+<div class="head">
+    <div class="title">
+        配置字典
+    </div>
+</div>
+<div class="orderlist m10 myorder">
+    @*@using (Html.BeginForm("index", "Config", FormMethod.Get, new RouteValueDictionary { { "id", "searchForm" } }))
+    {
+        <div class="item_list pt10">
+            <div class="item_list">
+                <ul>
+                    <li>
+                        <label>关键字</label>
+                        <input type="text" name="keyword" value="@ViewBag.keyword" />
+                    </li>
+                    <li class="search">
+                        <input type="submit" class="btn1" value="搜索" accesskey="S" /></li>
+                </ul>
+            </div>
+        </div>
+    }*@
+    <a href="@Url.Action("add", "Config")" class="btn1">新增</a>
+    <div class="tab_cont">
+        <div class="List">
+            @Html.Partial("List", Model);
+        </div>
+    </div>
+</div>

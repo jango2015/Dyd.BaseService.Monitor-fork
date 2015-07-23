@@ -1,0 +1,86 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.TimeWatch.Model.tb_timewatchlog_model>
+@{
+    ViewBag.Title = "耗时查询";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Dictionary<int, Dyd.BaseService.Monitor.Domain.PlatformManage.Model.timewatchConnModel> dic =
+        ViewBag.TimeWatchConn as Dictionary<int, Dyd.BaseService.Monitor.Domain.PlatformManage.Model.timewatchConnModel>;
+}
+<div class="head">
+    <div class="title">
+        耗时查询
+    </div>
+</div>
+<div class="orderlist m10 myorder">
+    @*@using (Ajax.BeginForm("index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "List", HttpMethod = "post", InsertionMode = InsertionMode.Replace }, new RouteValueDictionary { { "id", "searchForm" } }))*@
+    @using (Html.BeginForm("index", "TimeWatchLog", FormMethod.Get, new RouteValueDictionary { { "id", "searchForm" } }))      
+    {
+        <div class="item_list pt10">
+            <div class="item_list">
+                <ul>
+                    <li>
+                        <label>(本地)创建时间</label><input type="text"  class="smalltext"  name="timebegin" value="@ViewBag.timebegin" /> - <input type="text"  class="smalltext"  name="timeend" value="@ViewBag.timeend" />(不可跨日查询)
+                    </li>
+                    <li>
+                        <label>耗时</label><input type="text"  class="smalltext"  name="timewatchmin" value="@ViewBag.timewatchmin" /> - <input type="text"  class="smalltext"  name="timewatchmax" value="@ViewBag.timewatchmax" />（浮点类型，无索引<b style="color:red">慎用</b>）
+                    </li>
+                  @*  <li>
+                        <label>项目名称</label><input type="text"  class="smalltext"  name="projectname" value="@ViewBag.projectname" />
+                    </li>*@
+                    <li>
+                        <label>日志类型</label>  
+                        <select name="logtype">
+                            <option value="-1">选择</option>
+                            @foreach (var o in Dyd.BaseService.Monitor.Core.EnumUtils<XXF.BaseService.Monitor.SystemRuntime.EnumTimeWatchLogType>.GetAllEnumsOfList2())
+                            { 
+                                <option value="@o.Value"@Html.Raw(o.Value==ViewBag.logtype+""?"selected='selected'":"") >@o.Text</option>
+                            }
+                        </select>(无索引<b style="color:red">慎用</b>)
+                    </li>
+                     <li>
+                        <label>Url</label>  
+                        <input type="text"  class="smalltext"  name="url" value="@ViewBag.url" />
+                    </li>
+                    <li>
+                        <label>日志标识</label>  
+                        <input type="text"  class="smalltext"  name="logtag" value="@ViewBag.logtag" />
+                    </li>
+                     <li>
+                        <label>来源ip</label>  
+                        <input type="text"  class="smalltext"  name="fromip" value="@ViewBag.fromip" />(无索引<b style="color:red">慎用</b>)
+                    </li>
+
+                     <li>
+                        <label>sqlip</label>  
+                        <input type="text"  class="smalltext"  name="sqlip" value="@ViewBag.sqlip" />(无索引<b style="color:red">慎用</b>)
+                    </li>
+                     <li>
+                        <label>排序</label>
+                        <select name="orderby">
+                            <option value="" @(ViewBag.orderby+""==""?"selected='selected'":"")>创建时间降序</option>
+                            @*<option value="time desc" @(ViewBag.orderby+""=="time desc"?"selected='selected'":"")>耗时降序</option>
+                            <option value="time asc" @(ViewBag.orderby+""=="time asc"?"selected='selected'":"")>耗时升序</option>*@
+                        </select>(无索引)
+                    </li>
+                    <li>
+                        <label>数据库</label>
+                        <select name="connid">
+                            @foreach (KeyValuePair<int, Dyd.BaseService.Monitor.Domain.PlatformManage.Model.timewatchConnModel> d in dic)
+                            { 
+                                <option value="@d.Key"@Html.Raw(d.Key==ViewBag.Connid?"selected=selected":"") >@d.Value.name</option>
+                            }
+                        </select>
+                    </li>
+                    <li class="search">
+                        <input type="submit" class="btn1" value="搜索" accesskey="S" /><b style="color:red">(若未能使用索引,耗时查询速度很慢,需要注意)</b></li>
+                    @*<li><a href="@Url.Action("Chart")">查看图表</a></li>*@
+                </ul>
+            </div>
+        </div>
+    }
+    <div class="tab_cont">
+        <div class="List">
+            @Html.Partial("List",Model)
+        </div>
+    </div>
+</div>

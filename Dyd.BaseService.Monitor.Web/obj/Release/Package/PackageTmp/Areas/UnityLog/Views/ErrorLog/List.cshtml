@@ -1,0 +1,34 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using XXF.Extensions;
+@model PagedList<Dyd.BaseService.Monitor.Domain.UnityLog.Model.tb_error_log_model>
+
+<table class="mytable">
+    <tr>
+        <th style="width:30px;">ID</th>
+        <th style="width:30px">日志类型</th>
+        <th style="width:120px" >项目</th>
+        <th style="width:120px">错误简单标识</th>
+        <th style="width:50%">错误信息</th>
+        <th style="width:40px;">开发人员</th>
+        <th style="width:120px;">创建时间</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.id</td>
+             @{var logtypetext = Dyd.BaseService.Monitor.Core.EnumUtils<XXF.BaseService.Monitor.SystemRuntime.EnumErrorLogType>.GetText((XXF.BaseService.Monitor.SystemRuntime.EnumErrorLogType)item.logtype);}
+            <td>@(logtypetext)</td>
+            <td>@item.projectname</td>
+            <td>@item.logtag</td>
+            @{var msg = "【信息】" + item.msg + "\r\n【堆栈】" + item.tracestack + "\r\n【备注】" + item.remark;}
+            <td title="@msg" style="text-align:left">@Html.Raw(msg.SubString3(200))</td>
+            <td>@item.developer</td>
+            <td style="text-align:left">数据库:@item.sqlservercreatetime<br/>项目:@item.logcreatetime</td>
+        </tr>
+    }
+</table>
+<div class="total pt10">
+    <div class="fl">共<em>@Model.TotalPageCount</em>页<em>@Model.TotalItemCount</em>条记录，当前为第<em>@Model.CurrentPageIndex</em>页</div>
+    @Html.Pager(Model,new PagerOptions{PageIndexParameterName = "pageindex",ShowPageIndexBox = true,PageIndexBoxType = PageIndexBoxType.TextBox, CssClass="mvcPager"})
+    @*@Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "pageindex", ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.DropDownList, ShowGoButton = false }, new MvcAjaxOptions { UpdateTargetId = "List", HttpMethod = "Post", DataFormId = "searchForm" }, new { @class = "pager_page" })*@
+</div>

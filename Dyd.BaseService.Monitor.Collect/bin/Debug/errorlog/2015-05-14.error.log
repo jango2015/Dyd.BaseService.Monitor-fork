@@ -1,0 +1,143 @@
+【时间】2015-05-14 14:38:19:218
+【服务器】192.168.17.180
+【数据库】
+【补充信息】MonitorCollectBackgroundTask 初始化错误
+【原始信息】未将对象引用设置到对象的实例。
+【参数】
+【堆栈打印】   在 Dyd.BaseService.Monitor.Collect.BackgroundTasks.MonitorCollectBackgroundTask.Start() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\BackgroundTasks\MonitorCollectBackgroundTask.cs:行号 30
+******************************************************************************************************************************************************
+【时间】2015-05-14 14:38:19:244
+【服务器】192.168.17.180
+【数据库】
+【补充信息】PerformanceCollectBackgroundTask 初始化错误
+【原始信息】未将对象引用设置到对象的实例。
+【参数】
+【堆栈打印】   在 Dyd.BaseService.Monitor.Collect.BackgroundTasks.PerformanceCollectBackgroundTask.Start() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\BackgroundTasks\PerformanceCollectBackgroundTask.cs:行号 32
+******************************************************************************************************************************************************
+【时间】2015-05-14 14:39:33:376
+【服务器】192.168.17.180
+【数据库】
+【补充信息】MonitorCollectBackgroundTask 初始化错误
+【原始信息】未将对象引用设置到对象的实例。
+【参数】
+【堆栈打印】   在 Dyd.BaseService.Monitor.Collect.BackgroundTasks.MonitorCollectBackgroundTask.Start() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\BackgroundTasks\MonitorCollectBackgroundTask.cs:行号 30
+******************************************************************************************************************************************************
+【时间】2015-05-14 14:39:33:402
+【服务器】192.168.17.180
+【数据库】
+【补充信息】PerformanceCollectBackgroundTask 初始化错误
+【原始信息】未将对象引用设置到对象的实例。
+【参数】
+【堆栈打印】   在 Dyd.BaseService.Monitor.Collect.BackgroundTasks.PerformanceCollectBackgroundTask.Start() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\BackgroundTasks\PerformanceCollectBackgroundTask.cs:行号 32
+******************************************************************************************************************************************************
+【时间】2015-05-14 14:40:08:802
+【服务器】192.168.17.180
+【数据库】
+【补充信息】MonitorCollectBackgroundTask 初始化错误
+【原始信息】未将对象引用设置到对象的实例。
+【参数】
+【堆栈打印】   在 Dyd.BaseService.Monitor.Collect.BackgroundTasks.MonitorCollectBackgroundTask.Start() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\BackgroundTasks\MonitorCollectBackgroundTask.cs:行号 30
+******************************************************************************************************************************************************
+【时间】2015-05-14 14:40:57:098
+【服务器】192.168.17.180
+【数据库】
+【补充信息】MonitorCollectBackgroundTask 初始化错误
+【原始信息】未将对象引用设置到对象的实例。
+【参数】
+【堆栈打印】   在 Dyd.BaseService.Monitor.Collect.BackgroundTasks.MonitorCollectBackgroundTask.Start() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\BackgroundTasks\MonitorCollectBackgroundTask.cs:行号 30
+******************************************************************************************************************************************************
+【时间】2015-05-14 14:41:05:736
+【服务器】192.168.17.180
+【数据库】
+【补充信息】PerformanceCollectBackgroundTask 初始化错误
+【原始信息】未将对象引用设置到对象的实例。
+【参数】
+【堆栈打印】   在 Dyd.BaseService.Monitor.Collect.BackgroundTasks.PerformanceCollectBackgroundTask.Start() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\BackgroundTasks\PerformanceCollectBackgroundTask.cs:行号 32
+******************************************************************************************************************************************************
+【时间】2015-05-14 15:29:20:968
+【服务器】192.168.17.180
+【数据库】
+【补充信息】当前后台任务出现严重错误:
+【原始信息】未将对象引用设置到对象的实例。
+【参数】
+【堆栈打印】   在 Dyd.BaseService.Monitor.Collect.BackgroundTasks.MonitorCollectBackgroundTask.Run() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\BackgroundTasks\MonitorCollectBackgroundTask.cs:行号 71
+   在 Dyd.BaseService.Monitor.Core.BaseBackgroundTask.TryRun() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\BaseBackgroundTask.cs:行号 30
+******************************************************************************************************************************************************
+【时间】2015-05-14 15:29:48:412
+【服务器】192.168.17.180
+【数据库】
+【补充信息】当前后台任务出现严重错误:
+【原始信息】未将对象引用设置到对象的实例。
+【参数】
+【堆栈打印】   在 Dyd.BaseService.Monitor.Collect.BackgroundTasks.MonitorCollectBackgroundTask.Run() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\BackgroundTasks\MonitorCollectBackgroundTask.cs:行号 71
+   在 Dyd.BaseService.Monitor.Core.BaseBackgroundTask.TryRun() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\BaseBackgroundTask.cs:行号 30
+******************************************************************************************************************************************************
+【时间】2015-05-14 15:30:13:371
+【服务器】192.168.17.180
+【数据库】
+【补充信息】当前后台任务出现严重错误:
+【原始信息】未将对象引用设置到对象的实例。
+【参数】
+【堆栈打印】   在 Dyd.BaseService.Monitor.Collect.BackgroundTasks.MonitorCollectBackgroundTask.Run() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\BackgroundTasks\MonitorCollectBackgroundTask.cs:行号 71
+   在 Dyd.BaseService.Monitor.Core.BaseBackgroundTask.TryRun() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\BaseBackgroundTask.cs:行号 30
+******************************************************************************************************************************************************
+【时间】2015-05-14 17:28:35:618
+【服务器】192.168.17.180
+【数据库】
+【补充信息】当前后台任务出现严重错误:
+【原始信息】Network Interface-Bytes Sent/sec-Realtek PCIe GBE Family Controller 性能计数器出错:
+【参数】
+【堆栈打印】   在 Dyd.BaseService.Monitor.Collect.CollectTasks.PerformanceCounterCollectTask.Collect() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\CollectTasks\PerformanceCounterCollectTask.cs:行号 33
+   在 Dyd.BaseService.Monitor.Collect.BackgroundTasks.PerformanceCollectBackgroundTask.Run() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\BackgroundTasks\PerformanceCollectBackgroundTask.cs:行号 54
+   在 Dyd.BaseService.Monitor.Core.BaseBackgroundTask.TryRun() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\BaseBackgroundTask.cs:行号 30
+******************************************************************************************************************************************************
+【时间】2015-05-14 17:28:35:732
+【服务器】192.168.17.180
+【数据库】
+【补充信息】当前后台任务出现严重错误:
+【原始信息】Network Interface-Bytes Sent/sec-Realtek PCIe GBE Family Controller 性能计数器出错:
+【参数】
+【堆栈打印】   在 Dyd.BaseService.Monitor.Collect.CollectTasks.PerformanceCounterCollectTask.Collect() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\CollectTasks\PerformanceCounterCollectTask.cs:行号 33
+   在 Dyd.BaseService.Monitor.Collect.BackgroundTasks.MonitorCollectBackgroundTask.Run() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\BackgroundTasks\MonitorCollectBackgroundTask.cs:行号 64
+   在 Dyd.BaseService.Monitor.Core.BaseBackgroundTask.TryRun() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\BaseBackgroundTask.cs:行号 30
+******************************************************************************************************************************************************
+【时间】2015-05-14 17:28:45:666
+【服务器】192.168.17.180
+【数据库】
+【补充信息】当前后台任务出现严重错误:
+【原始信息】Network Interface-Bytes Sent/sec-Realtek PCIe GBE Family Controller 性能计数器出错:
+【参数】
+【堆栈打印】   在 Dyd.BaseService.Monitor.Collect.CollectTasks.PerformanceCounterCollectTask.Collect() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\CollectTasks\PerformanceCounterCollectTask.cs:行号 33
+   在 Dyd.BaseService.Monitor.Collect.BackgroundTasks.PerformanceCollectBackgroundTask.Run() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\BackgroundTasks\PerformanceCollectBackgroundTask.cs:行号 54
+   在 Dyd.BaseService.Monitor.Core.BaseBackgroundTask.TryRun() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\BaseBackgroundTask.cs:行号 30
+******************************************************************************************************************************************************
+【时间】2015-05-14 17:28:45:791
+【服务器】192.168.17.180
+【数据库】
+【补充信息】当前后台任务出现严重错误:
+【原始信息】Network Interface-Bytes Sent/sec-Realtek PCIe GBE Family Controller 性能计数器出错:
+【参数】
+【堆栈打印】   在 Dyd.BaseService.Monitor.Collect.CollectTasks.PerformanceCounterCollectTask.Collect() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\CollectTasks\PerformanceCounterCollectTask.cs:行号 33
+   在 Dyd.BaseService.Monitor.Collect.BackgroundTasks.MonitorCollectBackgroundTask.Run() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\BackgroundTasks\MonitorCollectBackgroundTask.cs:行号 64
+   在 Dyd.BaseService.Monitor.Core.BaseBackgroundTask.TryRun() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\BaseBackgroundTask.cs:行号 30
+******************************************************************************************************************************************************
+【时间】2015-05-14 17:28:55:735
+【服务器】192.168.17.180
+【数据库】
+【补充信息】当前后台任务出现严重错误:
+【原始信息】Network Interface-Bytes Sent/sec-Realtek PCIe GBE Family Controller 性能计数器出错:
+【参数】
+【堆栈打印】   在 Dyd.BaseService.Monitor.Collect.CollectTasks.PerformanceCounterCollectTask.Collect() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\CollectTasks\PerformanceCounterCollectTask.cs:行号 33
+   在 Dyd.BaseService.Monitor.Collect.BackgroundTasks.PerformanceCollectBackgroundTask.Run() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\BackgroundTasks\PerformanceCollectBackgroundTask.cs:行号 54
+   在 Dyd.BaseService.Monitor.Core.BaseBackgroundTask.TryRun() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\BaseBackgroundTask.cs:行号 30
+******************************************************************************************************************************************************
+【时间】2015-05-14 17:28:55:842
+【服务器】192.168.17.180
+【数据库】
+【补充信息】当前后台任务出现严重错误:
+【原始信息】Network Interface-Bytes Sent/sec-Realtek PCIe GBE Family Controller 性能计数器出错:
+【参数】
+【堆栈打印】   在 Dyd.BaseService.Monitor.Collect.CollectTasks.PerformanceCounterCollectTask.Collect() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\CollectTasks\PerformanceCounterCollectTask.cs:行号 33
+   在 Dyd.BaseService.Monitor.Collect.BackgroundTasks.MonitorCollectBackgroundTask.Run() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Collect\BackgroundTasks\MonitorCollectBackgroundTask.cs:行号 64
+   在 Dyd.BaseService.Monitor.Core.BaseBackgroundTask.TryRun() 位置 e:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\BaseBackgroundTask.cs:行号 30
+******************************************************************************************************************************************************

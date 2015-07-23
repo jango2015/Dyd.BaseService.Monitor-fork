@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1C64E723-891A-4B46-84A4-6EFC3AE6377F}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Web</RootNamespace>
+    <AssemblyName>Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcPager">
+      <HintPath>..\..\..\点呀点3.0\3.开发\Libs\MvcPager.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="XXF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\引用\XXF.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Cluster\ClusterAreaRegistration.cs" />
+    <Compile Include="Areas\Cluster\Controllers\MonitorInfoController.cs" />
+    <Compile Include="Areas\Cluster\Controllers\MonitorinfoSnapshotController.cs" />
+    <Compile Include="Areas\Cluster\Controllers\PerformanceCollectController.cs" />
+    <Compile Include="Areas\Cluster\Controllers\PerformanceDayReportController.cs" />
+    <Compile Include="Areas\Manage\Controllers\ClusterCollectVersionController.cs" />
+    <Compile Include="Areas\Manage\Controllers\ConfigController.cs" />
+    <Compile Include="Areas\Manage\Controllers\DataBaseConfigController.cs" />
+    <Compile Include="Areas\Manage\Controllers\ClusterController.cs" />
+    <Compile Include="Areas\Manage\Controllers\OpenApiController.cs" />
+    <Compile Include="Areas\Manage\Controllers\UserController.cs" />
+    <Compile Include="Areas\Manage\ManageAreaRegistration.cs" />
+    <Content Include="Content\js\chart.js" />
+    <Compile Include="Areas\TimeWatchCustomer\Controllers\SqlHashContrastUrlController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Models\AuthorityCheck.cs" />
+    <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\Config.cs" />
+    <Compile Include="Areas\TimeWatchCustomer\Controllers\SqlHashConsultController.cs" />
+    <Compile Include="Areas\TimeWatchCustomer\Controllers\SqlHashNoParamController.cs" />
+    <Compile Include="Areas\TimeWatchCustomer\Controllers\TimeWatchLogApiDayReportController.cs" />
+    <Compile Include="Areas\TimeWatchCustomer\Controllers\TimeWatchLogController.cs" />
+    <Compile Include="Areas\TimeWatchCustomer\Controllers\TimeWatchLogSqlDayReportController.cs" />
+    <Compile Include="Models\TimeChartModel.cs" />
+    <Compile Include="Models\TimeWatchConnVisit.cs" />
+    <Compile Include="Areas\TimeWatchCustomer\TimeWatchCustomerAreaRegistration.cs" />
+    <Compile Include="Areas\UnityLog\Controllers\ErrorLogController.cs" />
+    <Compile Include="Areas\UnityLog\Controllers\LogController.cs" />
+    <Compile Include="Areas\UnityLog\UnityLogAreaRegistration.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\CropPic.css" />
+    <Content Include="Content\css\css.css" />
+    <Content Include="Content\css\css2.css" />
+    <Content Include="Content\css\login.css" />
+    <Content Include="Content\css\xpdialog.css" />
+    <Content Include="Content\css\xupinstyle.css" />
+    <Content Include="Content\HighChartPackCss.css" />
+    <Content Include="Content\jsoneditor\img\jsoneditor-icons.png" />
+    <Content Include="Content\jsoneditor\jsoneditor.css" />
+    <Content Include="Content\jsoneditor\jsoneditor.js" />
+    <Content Include="Content\jsoneditor\jsoneditor.min.css" />
+    <Content Include="Content\jsoneditor\jsoneditor.min.js" />
+    <Content Include="Content\js\common.js" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Areas\Manage\Views\Web.config" />
+    <Content Include="Areas\Manage\Views\Cluster\Index.cshtml" />
+    <Content Include="Areas\Manage\Views\ClusterCollectVersion\Index.cshtml" />
+    <Content Include="Areas\Manage\Views\Cluster\Add.cshtml" />
+    <Content Include="Areas\Manage\Views\Cluster\Update.cshtml" />
+    <Content Include="Areas\Manage\Views\Cluster\List.cshtml" />
+    <Content Include="Areas\Manage\Views\ClusterCollectVersion\List.cshtml" />
+    <Content Include="Areas\Manage\Views\ClusterCollectVersion\Add.cshtml" />
+    <Content Include="Areas\Manage\Views\DataBaseConfig\Index.cshtml" />
+    <Content Include="Areas\Manage\Views\DataBaseConfig\List.cshtml" />
+    <Content Include="Areas\Manage\Views\DataBaseConfig\Add.cshtml" />
+    <Content Include="Areas\Manage\Views\DataBaseConfig\Update.cshtml" />
+    <Content Include="Areas\Manage\Views\Config\Index.cshtml" />
+    <Content Include="Areas\Manage\Views\Config\List.cshtml" />
+    <Content Include="Areas\Manage\Views\Config\Add.cshtml" />
+    <Content Include="Areas\Manage\Views\Config\Update.cshtml" />
+    <Content Include="Areas\Cluster\Views\Web.config" />
+    <Content Include="Areas\Cluster\Views\PerformanceDayReport\Index.cshtml" />
+    <Content Include="Areas\Cluster\Views\PerformanceDayReport\List.cshtml" />
+    <Content Include="Areas\Cluster\Views\PerformanceCollect\Index.cshtml" />
+    <Content Include="Areas\Cluster\Views\PerformanceCollect\List.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\Web.config" />
+    <Content Include="Areas\UnityLog\Views\Web.config" />
+    <Content Include="Areas\UnityLog\Views\ErrorLog\Index.cshtml" />
+    <Content Include="Areas\UnityLog\Views\ErrorLog\List.cshtml" />
+    <Content Include="Areas\UnityLog\Views\Log\Index.cshtml" />
+    <Content Include="Areas\UnityLog\Views\Log\List.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\SqlHashConsult\Index.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\SqlHashConsult\List.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\SqlHashNoParam\Index.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\SqlHashNoParam\List.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\TimeWatchLogApiDayReport\Index.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\TimeWatchLogApiDayReport\List.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\TimeWatchLog\Index.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\TimeWatchLog\List.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\TimeWatchLogSqlDayReport\Index.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\TimeWatchLogSqlDayReport\List.cshtml" />
+    <Content Include="Areas\Manage\Views\User\Index.cshtml" />
+    <Content Include="Areas\Manage\Views\User\Add.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\TimeWatchLogApiDayReport\Chart.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\TimeWatchLogSqlDayReport\Chart.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\TimeWatchLog\Chart.cshtml" />
+    <Content Include="Areas\Cluster\Views\MonitorInfo\Index.cshtml" />
+    <Content Include="Areas\Cluster\Views\MonitorInfo\List.cshtml" />
+    <Content Include="Areas\Cluster\Views\PerformanceCollect\Chart.cshtml" />
+    <Content Include="Areas\Cluster\Views\PerformanceDayReport\Chart.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\SqlHashConsult\Chart.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\SqlHashNoParam\Chart.cshtml" />
+    <Content Include="Areas\Cluster\Views\PerformanceDayReport\ChartList.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\TimeWatchLogSqlDayReport\ChartList.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\TimeWatchLogApiDayReport\ChartList.cshtml" />
+    <Content Include="Areas\Cluster\Views\MonitorinfoSnapshot\Index.cshtml" />
+    <Content Include="Areas\Cluster\Views\MonitorinfoSnapshot\List.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\SqlHashContrastUrl\Index.cshtml" />
+    <Content Include="Areas\TimeWatchCustomer\Views\SqlHashContrastUrl\List.cshtml" />
+    <None Include="Properties\PublishProfiles\MonitorWeb.pubxml" />
+    <Content Include="Content\jsoneditor\jsoneditor.map" />
+    <None Include="Properties\PublishProfiles\11.pubxml" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\ChartCheckBtnCreate.js" />
+    <Content Include="Scripts\DatePicker\calendar.js" />
+    <Content Include="Scripts\DatePicker\lang\en.js" />
+    <Content Include="Scripts\DatePicker\lang\zh-cn.js" />
+    <Content Include="Scripts\DatePicker\lang\zh-tw.js" />
+    <Content Include="Scripts\DatePicker\skin\datePicker.gif" />
+    <Content Include="Scripts\DatePicker\skin\default\datepicker.css" />
+    <Content Include="Scripts\DatePicker\skin\default\img.gif" />
+    <Content Include="Scripts\DatePicker\skin\WdatePicker.css" />
+    <Content Include="Scripts\DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Scripts\DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Scripts\DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Scripts\DatePicker\WdatePicker.js" />
+    <Content Include="Scripts\DatePicker\开发包\lang\en.js" />
+    <Content Include="Scripts\DatePicker\开发包\lang\zh-cn.js" />
+    <Content Include="Scripts\DatePicker\开发包\lang\zh-tw.js" />
+    <Content Include="Scripts\DatePicker\开发包\readme.txt" />
+    <Content Include="Scripts\DatePicker\开发包\skin\datePicker.gif" />
+    <Content Include="Scripts\DatePicker\开发包\skin\default\datepicker.css" />
+    <Content Include="Scripts\DatePicker\开发包\skin\default\img.gif" />
+    <Content Include="Scripts\DatePicker\开发包\skin\WdatePicker.css" />
+    <Content Include="Scripts\DatePicker\开发包\skin\whyGreen\bg.jpg" />
+    <Content Include="Scripts\DatePicker\开发包\skin\whyGreen\datepicker.css" />
+    <Content Include="Scripts\DatePicker\开发包\skin\whyGreen\img.gif" />
+    <Content Include="Scripts\HighChartDetail.js" />
+    <Content Include="Scripts\HighChartPack.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\gfx\vml-radial-gradient.png" />
+    <Content Include="Scripts\Highcharts-4.0.3\graphics\meteogram-symbols-30px.png" />
+    <Content Include="Scripts\Highcharts-4.0.3\graphics\skies.jpg" />
+    <Content Include="Scripts\Highcharts-4.0.3\graphics\snow.png" />
+    <Content Include="Scripts\Highcharts-4.0.3\graphics\sun.png" />
+    <Content Include="Scripts\Highcharts-4.0.3\index.htm" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\adapters\standalone-framework.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\adapters\standalone-framework.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\highcharts-3d.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\highcharts-3d.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\highcharts-all.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\highcharts-more.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\highcharts-more.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\highcharts.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\highcharts.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\modules\canvas-tools.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\modules\canvas-tools.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\modules\data.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\modules\data.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\modules\drilldown.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\modules\drilldown.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\modules\exporting.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\modules\exporting.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\modules\funnel.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\modules\funnel.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\modules\heatmap.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\modules\heatmap.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\modules\no-data-to-display.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\modules\no-data-to-display.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\modules\solid-gauge.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\modules\solid-gauge.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\themes\dark-blue.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\themes\dark-green.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\themes\dark-unica.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\themes\gray.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\themes\grid-light.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\themes\grid.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\themes\sand-signika.js" />
+    <Content Include="Scripts\Highcharts-4.0.3\js\themes\skies.js" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\StreamCreateChart.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Cluster\Models\" />
+    <Folder Include="Areas\Cluster\Views\Shared\" />
+    <Folder Include="Areas\Manage\Models\" />
+    <Folder Include="Areas\Manage\Views\Shared\" />
+    <Folder Include="Areas\TimeWatchCustomer\Models\" />
+    <Folder Include="Areas\TimeWatchCustomer\Views\Shared\" />
+    <Folder Include="Areas\UnityLog\Models\" />
+    <Folder Include="Areas\UnityLog\Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dyd.BaseService.Monitor.Core\Dyd.BaseService.Monitor.Core.csproj">
+      <Project>{b6faddc3-3382-4bd9-8913-eeab1ade1dbd}</Project>
+      <Name>Dyd.BaseService.Monitor.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dyd.BaseService.Monitor.Domain\Dyd.BaseService.Monitor.Domain.csproj">
+      <Project>{e52a7463-fc9b-4e1a-8744-d52e686d2947}</Project>
+      <Name>Dyd.BaseService.Monitor.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XXF.BaseService.Monitor\XXF.BaseService.Monitor.csproj">
+      <Project>{9b48a904-f055-4f20-ae74-8c294f5dcda2}</Project>
+      <Name>XXF.BaseService.Monitor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:15282/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,149 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model List<Web.Models.TimeChartModel>
+@{
+    ViewBag.Title = "服务器性能图";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="head">
+    <div class="title">
+        服务器性能图 @if(!string.IsNullOrWhiteSpace(ViewBag.ServerName)){ <b style="color:blue">（@ViewBag.ServerName）</b>}
+    </div>
+</div>
+<div class="orderlist m10 myorder">
+    @using (Html.BeginForm("Chart", "PerformanceCollect", FormMethod.Get, new RouteValueDictionary { { "id", "searchForm" } }))      
+    {
+        <div class="item_list pt10">
+            <div class="item_list">
+                <ul>
+                    <li>
+                        <label>服务器ip</label>
+                        <input type="text" name="serverip" id="serverip"  class="smalltext"  value="@ViewBag.serverip" />
+                    </li>
+                    <li>
+                        <label>服务器id</label>
+                        <input type="text" name="serverid" id="serverid"  class="smalltext"  value="@ViewBag.serverid" />
+                    </li>
+                    <li>
+                        <label>时间</label><input type="text"  class="smalltext"  name="date" value="@ViewBag.date" />(支持日[2015-04-01],月[2015-04],年[2015])
+                    </li>
+                    <li>
+                        <label>数据类型</label>
+                        <select name="datatype">
+                            <option value="avg" @(ViewBag.datatype+""=="avg"?"selected='selected'":"")>平均</option>
+                            <option value="max" @(ViewBag.datatype+""=="max"?"selected='selected'":"")>最大</option>
+                            <option value="min" @(ViewBag.datatype+""=="min"?"selected='selected'":"")>最小</option>
+                        </select>
+                    </li>
+                    <li>
+                        <input type="checkbox" onclick="chooseAll(this); " value='' /><label>显示</label><input type="hidden" name="columns" id="columns" value="@ViewBag.columns" />@**@
+                        <input type="checkbox" value="cpu" />cpu<input type="checkbox" value="memory" />可用内存
+                        <input type="checkbox" value="ioread" />磁盘读<input type="checkbox" value="iowrite" />磁盘写
+                        <input type="checkbox" value="networkupload" />网络上传<input type="checkbox" value="networkdownload" />网络下载
+                        <input type="checkbox" value="iisrequest" />iis请求
+                    </li>
+                    <li class="search">
+                        <input type="submit" class="btn1" value="搜索" onclick="return search();" accesskey="S" /></li>
+                </ul>
+            </div>
+        </div>
+    }
+</div>
+<script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    <script src="~/Content/js/chart.js"></script>
+<div>
+     @foreach(var m in Model)
+    {
+        <div id="container@(m.Key)" style="width:50%;height:400px; float:left"></div>
+     }
+</div>
+<script>
+    
+    $("[type='checkbox']").each(function (i) {
+        //alert($(this).val());
+        if ($('#columns').val().indexOf($(this).val()) > -1 && $(this).val()!='')
+        {
+            $(this).attr("checked", true);
+        }
+    });
+    function chooseAll(item)
+    {
+        //alert($(item).attr("checked"));
+        if($(item).attr("checked"))
+        {
+            $("[type='checkbox']").attr("checked", true);
+        }
+        else
+            $("[type='checkbox']").attr("checked", false);
+    }
+    function search()
+    {
+        if ($("#serverip").val() == '' && $("#serverid").val() == "")
+        { alert("服务器ip或服务器id不能为空"); return false; }
+        var choosed = '';
+        $("[type='checkbox']").each(function (i) {
+            if ($(this).attr("checked") && $(this).val()!='') {
+                choosed += $(this).val() + ',';
+            }
+        });
+        $("#columns").val(choosed);
+        return true;
+    }
+      $(function () {
+    @foreach(var m in Model)
+    {
+        //",m.Key,m.Title,m.SubTitle,m.DataJson,m.YTitle,m.UnitText, m.StartDate.ToString("yyyy,MM,dd"),m.StartDate.Date.AddDays(1).ToString("yyyy,MM,dd")))
+        var c = @"$('#container'+'{key}').highcharts({
+            chart: {
+                zoomType: 'x',
+                spacingRight: 20
+            },
+            title: {
+                text: '{title}'
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                    '{subtitle}' :
+                    'Pinch the chart to zoom in'
+            },
+            xAxis: {
+                type: 'datetime',
+                maxZoom: {maxzoom}, // fourteen days
+                //tickInterval:60*60*1000,
+                max:Date.UTC({enddate}),
+                dateTimeLabelFormats:{day: '%b月%e日',month: '%y年%b月' ,year: '%Y'},
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                title: {
+                    text: '{ytitle}'
+                }
+            },
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: plotOptions1,
+
+            series: [{
+                type: 'area',
+                name: '{unittext}',
+                pointInterval:  {pointinterval},
+                pointStart: Date.UTC({startdate}),
+                data: {datajson}
+            }]
+        });".Replace("{key}", m.Key).Replace("{title}", m.Title).Replace("{subtitle}", m.SubTitle)
+            .Replace("{datajson}", m.DataJson).Replace("{ytitle}", m.YTitle)
+            .Replace("{startdate}", m.StartDate.ToString("yyyy,MM,dd"))
+            .Replace("{unittext}", m.UnitText)
+            .Replace("{maxzoom}", m.MaxZoom)
+            .Replace("{pointinterval}", m.PointInterval)
+            .Replace("{enddate}", m.EndDate.ToString("yyyy,MM,dd"));
+        @Html.Raw(c)
+    }
+});	
+
+</script>

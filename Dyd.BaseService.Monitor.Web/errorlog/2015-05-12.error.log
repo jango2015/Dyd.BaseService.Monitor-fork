@@ -1,0 +1,303 @@
+【时间】2015-05-12 14:29:51:233
+【服务器】192.168.17.180
+【数据库】192.168.17.201
+【补充信息】sql执行出错select count(1) from tb_error_log201404 where 1=1 
+【原始信息】对象名 'tb_error_log201404' 无效。
+【参数】[keyword:][month:2014-04]
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   在 XXF.Db.DbConnSql.<>c__DisplayClass4.<ExecuteScalar>b__3() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 166
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************
+【时间】2015-05-12 18:49:09:001
+【服务器】192.168.17.180
+【数据库】
+【补充信息】sql执行出错insert into tb_cluster(servername,serverip,ifmonitor,performancecollectconfigjson,monitorcollectconfigjson,createtime,lastupdatetime,onlinetime)
+										   values(@servername,@serverip,@ifmonitor,@performancecollectconfigjson,@monitorcollectconfigjson,@createtime,@lastupdatetime,@onlinetime)
+【原始信息】SqlDateTime 溢出。必须介于 1/1/1753 12:00:00 AM 和 12/31/9999 11:59:59 PM 之间。
+【参数】[servername:1][serverip:192.168.17.2][ifmonitor:1][performancecollectconfigjson:[
+  {
+    "CollectName": "cpu",
+    "CategoryName": "Processor",
+    "CounterName": "% Processor Time",
+    "InstanceName": "_Total",
+    "CollectType": 0,
+    "MoreThanWarningValue": {
+      "Value": 0.8,
+      "IsWarning": true
+    },
+    "LessThanWarningValue": {
+      "Value": 0.2,
+      "IsWarning": true
+    },
+    "EqualWarningValue": {
+      "Value": "",
+      "IsWarning": false
+    }
+  },
+  {
+    "CollectName": "内存",
+    "CategoryName": "Memory",
+    "CounterName": "Available MBytes",
+    "InstanceName": "",
+    "CollectType": 0,
+    "MoreThanWarningValue": {
+      "Value": 0.8,
+      "IsWarning": true
+    },
+    "LessThanWarningValue": {
+      "Value": 0.2,
+      "IsWarning": true
+    },
+    "EqualWarningValue": {
+      "Value": "",
+      "IsWarning": false
+    }
+  },
+  {
+    "CollectName": "网络发送/s",
+    "CategoryName": "Network Interface",
+    "CounterName": "Bytes Sent/sec",
+    "InstanceName": "Realtek PCIe GBE Family Controller",
+    "CollectType": 0,
+    "MoreThanWarningValue": {
+      "Value": 0.8,
+      "IsWarning": true
+    },
+    "LessThanWarningValue": {
+      "Value": 0.2,
+      "IsWarning": true
+    },
+    "EqualWarningValue": {
+      "Value": "",
+      "IsWarning": false
+    }
+  },
+  {
+    "CollectName": "网络下载/s",
+    "CategoryName": "Network Interface",
+    "CounterName": "Bytes Received/sec",
+    "InstanceName": "Realtek PCIe GBE Family Controller",
+    "CollectType": 0,
+    "MoreThanWarningValue": {
+      "Value": 0.8,
+      "IsWarning": true
+    },
+    "LessThanWarningValue": {
+      "Value": 0.2,
+      "IsWarning": true
+    },
+    "EqualWarningValue": {
+      "Value": "",
+      "IsWarning": false
+    }
+  },
+  {
+    "CollectName": "物理磁盘读字节/s",
+    "CategoryName": "PhysicalDisk",
+    "CounterName": "Disk Read Bytes/sec",
+    "InstanceName": "_Total",
+    "CollectType": 0,
+    "MoreThanWarningValue": {
+      "Value": 0.8,
+      "IsWarning": true
+    },
+    "LessThanWarningValue": {
+      "Value": 0.2,
+      "IsWarning": true
+    },
+    "EqualWarningValue": {
+      "Value": "",
+      "IsWarning": false
+    }
+  },
+  {
+    "CollectName": "物理磁盘写字节/s",
+    "CategoryName": "PhysicalDisk",
+    "CounterName": "Disk Write Bytes/sec",
+    "InstanceName": "_Total",
+    "CollectType": 0,
+    "MoreThanWarningValue": {
+      "Value": 0.8,
+      "IsWarning": true
+    },
+    "LessThanWarningValue": {
+      "Value": 0.2,
+      "IsWarning": true
+    },
+    "EqualWarningValue": {
+      "Value": "",
+      "IsWarning": false
+    }
+  },
+  {
+    "CollectName": "IIS请求/s",
+    "CategoryName": "Web Service",
+    "CounterName": "Current Connections",
+    "InstanceName": "_Total",
+    "CollectType": 0,
+    "MoreThanWarningValue": {
+      "Value": 100,
+      "IsWarning": true
+    },
+    "LessThanWarningValue": {
+      "Value": 0,
+      "IsWarning": true
+    },
+    "EqualWarningValue": {
+      "Value": "0",
+      "IsWarning": false
+    }
+  }
+]][monitorcollectconfigjson:[
+  {
+    "CollectName": "cpu",
+    "CategoryName": "Processor",
+    "CounterName": "% Processor Time",
+    "InstanceName": "_Total",
+    "CollectType": 0,
+    "MoreThanWarningValue": {
+      "Value": 0.8,
+      "IsWarning": true
+    },
+    "LessThanWarningValue": {
+      "Value": 0.2,
+      "IsWarning": true
+    },
+    "EqualWarningValue": {
+      "Value": "",
+      "IsWarning": false
+    }
+  },
+  {
+    "CollectName": "内存",
+    "CategoryName": "Memory",
+    "CounterName": "Available MBytes",
+    "InstanceName": "",
+    "CollectType": 0,
+    "MoreThanWarningValue": {
+      "Value": 0.8,
+      "IsWarning": true
+    },
+    "LessThanWarningValue": {
+      "Value": 0.2,
+      "IsWarning": true
+    },
+    "EqualWarningValue": {
+      "Value": "",
+      "IsWarning": false
+    }
+  },
+  {
+    "CollectName": "网络发送/s",
+    "CategoryName": "Network Interface",
+    "CounterName": "Bytes Sent/sec",
+    "InstanceName": "Realtek PCIe GBE Family Controller",
+    "CollectType": 0,
+    "MoreThanWarningValue": {
+      "Value": 0.8,
+      "IsWarning": true
+    },
+    "LessThanWarningValue": {
+      "Value": 0.2,
+      "IsWarning": true
+    },
+    "EqualWarningValue": {
+      "Value": "",
+      "IsWarning": false
+    }
+  },
+  {
+    "CollectName": "网络下载/s",
+    "CategoryName": "Network Interface",
+    "CounterName": "Bytes Received/sec",
+    "InstanceName": "Realtek PCIe GBE Family Controller",
+    "CollectType": 0,
+    "MoreThanWarningValue": {
+      "Value": 0.8,
+      "IsWarning": true
+    },
+    "LessThanWarningValue": {
+      "Value": 0.2,
+      "IsWarning": true
+    },
+    "EqualWarningValue": {
+      "Value": "",
+      "IsWarning": false
+    }
+  },
+  {
+    "CollectName": "物理磁盘读字节/s",
+    "CategoryName": "PhysicalDisk",
+    "CounterName": "Disk Read Bytes/sec",
+    "InstanceName": "_Total",
+    "CollectType": 0,
+    "MoreThanWarningValue": {
+      "Value": 0.8,
+      "IsWarning": true
+    },
+    "LessThanWarningValue": {
+      "Value": 0.2,
+      "IsWarning": true
+    },
+    "EqualWarningValue": {
+      "Value": "",
+      "IsWarning": false
+    }
+  },
+  {
+    "CollectName": "物理磁盘写字节/s",
+    "CategoryName": "PhysicalDisk",
+    "CounterName": "Disk Write Bytes/sec",
+    "InstanceName": "_Total",
+    "CollectType": 0,
+    "MoreThanWarningValue": {
+      "Value": 0.8,
+      "IsWarning": true
+    },
+    "LessThanWarningValue": {
+      "Value": 0.2,
+      "IsWarning": true
+    },
+    "EqualWarningValue": {
+      "Value": "",
+      "IsWarning": false
+    }
+  },
+  {
+    "CollectName": "IIS请求/s",
+    "CategoryName": "Web Service",
+    "CounterName": "Current Connections",
+    "InstanceName": "_Total",
+    "CollectType": 0,
+    "MoreThanWarningValue": {
+      "Value": 100,
+      "IsWarning": true
+    },
+    "LessThanWarningValue": {
+      "Value": 0,
+      "IsWarning": true
+    },
+    "EqualWarningValue": {
+      "Value": "0",
+      "IsWarning": false
+    }
+  }
+]]
+【堆栈打印】   在 System.Data.SqlClient.TdsParser.TdsExecuteRPC(_SqlRPC[] rpcArray, Int32 timeout, Boolean inSchema, SqlNotificationRequest notificationRequest, TdsParserStateObject stateObj, Boolean isCommandProc, Boolean sync, TaskCompletionSource`1 completion, Int32 startRpc, Int32 startParam)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 XXF.Db.DbConnSql.<>c__DisplayClass1.<ExecuteSql>b__0() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 144
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 58
+******************************************************************************************************************************************************

@@ -1,0 +1,34 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using XXF.Extensions;
+@model PagedList<Dyd.BaseService.Monitor.Domain.UnityLog.Model.tb_log_model>
+
+<table>
+    <tr>
+        <th>ID</th>
+       
+        <th>日志类型</th>
+        <th>项目名称</th>
+        <th>日志唯一标示</th>
+        <th>错误信息</th>
+         <th>数据库创建时间</th>
+        <th>项目中创建时间</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.id</td>
+             @{var logtypetext = Dyd.BaseService.Monitor.Core.EnumUtils<XXF.BaseService.Monitor.SystemRuntime.EnumLogType>.GetText((XXF.BaseService.Monitor.SystemRuntime.EnumLogType)item.logtype);}
+            <td>@(logtypetext)</td>
+            <td>@item.projectname</td>
+            <td>@item.logtag</td>
+            <td title="@item.msg" style="text-align:left">@Html.Raw(logtypetext.Contains("错误")?"<b style='color:red'>"+item.msg.SubString3(200)+"</b>":item.msg.SubString3(200))</td>
+            <td>@item.sqlservercreatetime</td>
+            <td>@item.logcreatetime</td>
+        </tr>
+    }
+</table>
+<div class="total pt10">
+    <div class="fl">共<em>@Model.TotalPageCount</em>页<em>@Model.TotalItemCount</em>条记录，当前为第<em>@Model.CurrentPageIndex</em>页</div>
+    @Html.Pager(Model,new PagerOptions{PageIndexParameterName = "pageindex",ShowPageIndexBox = true,PageIndexBoxType = PageIndexBoxType.TextBox, CssClass="mvcPager"})
+    @*@Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "pageindex", ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.DropDownList, ShowGoButton = false }, new MvcAjaxOptions { UpdateTargetId = "List", HttpMethod = "Post", DataFormId = "searchForm" }, new { @class = "pager_page" })*@
+</div>

@@ -1,0 +1,64 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.Cluster.Model.tb_performance_dayreport_model>
+@{
+    ViewBag.Title = "服务器月性能表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+</style>
+<div class="head">
+    <div class="title">
+        服务器月性能表
+    </div>
+</div>
+<div class="orderlist m10 myorder">
+    @*@using (Ajax.BeginForm("index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "List", HttpMethod = "post", InsertionMode = InsertionMode.Replace }, new RouteValueDictionary { { "id", "searchForm" } }))*@
+    @using (Html.BeginForm("index", "PerformanceDayReport", FormMethod.Get, new RouteValueDictionary { { "id", "searchForm" } }))      
+    {
+        <div class="item_list pt10">
+            <div class="item_list">
+                <ul>
+                   <li>
+                        <label>服务器ip</label>
+                        <input type="text" style="" name="serverip" class="smalltext" value="@ViewBag.serverip" />
+                    </li>
+                    <li>
+                        <label>服务器id</label>
+                        <input type="text" name="serverid" class="smalltext"  value="@ViewBag.serverid" />
+                    </li>
+                   
+                    <li>
+                        <label>日期</label><input type="text" id="searchTime"  class="smalltext"  name="timebegin" value="@ViewBag.timebegin" /> - <input type="text" id="searchTime" class="smalltext"  name="timeend" value="@ViewBag.timeend" />（必须为日期）
+                    </li>
+                    <li>
+                        <label>降序</label>
+                        <select name="orderby">
+                            <option value="">日期</option>
+                            <option value="cpu" @(ViewBag.orderby+""=="cpu"?"selected='selected'":"")>cpu</option>
+                            <option value="memory" @(ViewBag.orderby+""=="memory"?"selected='selected'":"")>可用内存</option>
+                            <option value="networkupload" @(ViewBag.orderby+""=="networkupload"?"selected='selected'":"")>上传流量</option>
+                            <option value="networkdownload" @(ViewBag.orderby+""=="networkdownload"?"selected='selected'":"")>下载流量</option>
+                            <option value="ioread" @(ViewBag.orderby+""=="ioread"?"selected='selected'":"")>磁盘读</option>
+                            <option value="iowrite" @(ViewBag.orderby+""=="iowrite"?"selected='selected'":"")>磁盘写</option>
+                            <option value="iisrequest" @(ViewBag.orderby+""=="iisrequest"?"selected='selected'":"")>iis请求</option>
+                        </select>
+                        <select name="datatype">
+                            <option value="avg" @(ViewBag.orderby+""=="avg"?"selected='selected'":"")>平均</option>
+                            <option value="max" @(ViewBag.orderby+""=="max"?"selected='selected'":"")>最大</option>
+                            <option value="min" @(ViewBag.orderby+""=="min"?"selected='selected'":"")>最小</option>
+                        </select>
+                    </li>
+                    <li class="search">
+                        <input type="submit" class="btn1" value="搜索" accesskey="S" /></li>
+                    <@*li><a href="@Url.Action("Chart")">查看图表</a></li>*@
+                </ul>
+            </div>
+        </div>
+    }
+    <div class="tab_cont">
+        <div class="List">
+            @Html.Partial("List",Model)
+        </div>
+    </div>
+</div>

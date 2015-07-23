@@ -1,0 +1,71 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.Cluster.Model.tb_cluster_monitorinfo_model>
+@{
+    ViewBag.Title = "服务器监控信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="head">
+    <div class="title">
+        服务器监控信息
+    </div>
+</div>
+<div class="orderlist m10 myorder">
+    @using (Html.BeginForm("index", "MonitorInfo", FormMethod.Get, new RouteValueDictionary { { "id", "searchForm" } }))      
+    {
+        <div class="item_list pt10">
+            <div class="item_list">
+                <ul>
+                    <li>
+                        <label>服务器IP/Name</label>
+                        <input type="text" name="keyword"  class="smalltext"  value="@ViewBag.keyword" />
+                    </li>
+                     <li>
+                        <label>服务器ID</label>
+                        <input type="text" name="serverid"  class="smalltext"  value="@ViewBag.serverid" />
+                    </li>
+                    <li>
+                        <label>监控内容高亮</label>
+                        <input type="text" name="monitorjsonkeyword"  class="smalltext"  value="@ViewBag.monitorjsonkeyword" />
+                    </li>
+                    <li class="search">
+                        <input type="submit" id="mysearch" class="btn1" value="搜索" accesskey="S" />
+                         <input id="inputrefreash" type="checkbox" @Html.Raw(ViewBag.ifrefreash=="true"?"checked='checked'":"") onclick="choose()"/>自动刷新
+                        <input type="hidden" value="@ViewBag.ifrefreash" name="ifrefreash" id="ifrefreash" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+    <script>
+        var myrefreash = '@(ViewBag.ifrefreash==null?"":ViewBag.ifrefreash.ToString().ToLower())';
+        function pagerefreash()
+        {
+            //alert(myrefreash);
+            if (myrefreash == 'true')
+            {
+                window.location = window.location.href.replace("#divresult", "");
+            }
+        }
+        function choose()
+        {
+            if ($("#inputrefreash").attr("checked")) {
+                $('#ifrefreash').val("true");
+            }
+            else {
+                $('#ifrefreash').val("false");
+            }
+            
+            $('#mysearch').click();
+        }
+        setTimeout(pagerefreash, "5000");
+        $(function () {
+            if (myrefreash == 'true')
+                window.location = "#divresult";
+        });
+</script>
+    <div class="tab_cont">
+        <div class="List" id="divresult">
+            @Html.Partial("List",Model)
+        </div>
+    </div>
+</div>

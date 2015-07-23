@@ -1,0 +1,161 @@
+USE [dyd_bs_monitor_platform_manage]
+GO
+/****** Object:  Table [dbo].[tb_user]    Script Date: 05/21/2015 17:11:37 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tb_user](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[userstaffno] [varchar](25) NOT NULL,
+	[username] [varchar](25) NOT NULL,
+	[userrole] [tinyint] NOT NULL,
+	[usercreatetime] [datetime] NOT NULL,
+	[usertel] [varchar](20) NOT NULL,
+	[useremail] [varchar](50) NOT NULL,
+	[lastsenderrortime] [datetime] NOT NULL,
+	[errorsendintervaltime] [int] NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'用户工号' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_user', @level2type=N'COLUMN',@level2name=N'userstaffno'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'用户名' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_user', @level2type=N'COLUMN',@level2name=N'username'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'用户角色' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_user', @level2type=N'COLUMN',@level2name=N'userrole'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'用户创建时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_user', @level2type=N'COLUMN',@level2name=N'usercreatetime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'用户手机号码' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_user', @level2type=N'COLUMN',@level2name=N'usertel'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'用户email' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_user', @level2type=N'COLUMN',@level2name=N'useremail'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'上一次错误发送时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_user', @level2type=N'COLUMN',@level2name=N'lastsenderrortime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'错误发送时间间隔（单位:分钟）' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_user', @level2type=N'COLUMN',@level2name=N'errorsendintervaltime'
+GO
+/****** Object:  Table [dbo].[tb_keyvalue_config]    Script Date: 05/21/2015 17:11:37 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tb_keyvalue_config](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[key] [varchar](100) NOT NULL,
+	[value] [varchar](1000) NOT NULL,
+	[remark] [varchar](200) NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE NONCLUSTERED INDEX [IX_tb_keyvalue_config_key] ON [dbo].[tb_keyvalue_config] 
+(
+	[key] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tb_database_config]    Script Date: 05/21/2015 17:11:37 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tb_database_config](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[dblocalname] [varchar](40) NOT NULL,
+	[dbserver] [varchar](50) NOT NULL,
+	[dbname] [varchar](50) NOT NULL,
+	[dbuser] [varchar](50) NOT NULL,
+	[dbpass] [varchar](60) NOT NULL,
+	[dbtype] [tinyint] NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE NONCLUSTERED INDEX [IX_tb_database_config_dbtype] ON [dbo].[tb_database_config] 
+(
+	[dbtype] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'数据库本地昵称' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_database_config', @level2type=N'COLUMN',@level2name=N'dblocalname'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'数据库服务器地址' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_database_config', @level2type=N'COLUMN',@level2name=N'dbserver'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'数据库名称' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_database_config', @level2type=N'COLUMN',@level2name=N'dbname'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'数据库用户名' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_database_config', @level2type=N'COLUMN',@level2name=N'dbuser'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'数据库密码' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_database_config', @level2type=N'COLUMN',@level2name=N'dbpass'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'数据库类型' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_database_config', @level2type=N'COLUMN',@level2name=N'dbtype'
+GO
+/****** Object:  Table [dbo].[tb_cluster_collect_version]    Script Date: 05/21/2015 17:11:37 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tb_cluster_collect_version](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[versionnum] [int] NOT NULL,
+	[versioncreatetime] [datetime] NOT NULL,
+	[zipfilename] [varchar](50) NOT NULL,
+	[zipfile] [image] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE CLUSTERED INDEX [IX_tb_cluster_collect_version] ON [dbo].[tb_cluster_collect_version] 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tb_cluster]    Script Date: 05/21/2015 17:11:37 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tb_cluster](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[servername] [varchar](50) NOT NULL,
+	[serverip] [varchar](50) NOT NULL,
+	[ifmonitor] [bit] NOT NULL,
+	[performancecollectconfigjson] [varchar](max) NOT NULL,
+	[monitorcollectconfigjson] [varchar](max) NOT NULL,
+	[createtime] [datetime] NOT NULL,
+	[lastupdatetime] [datetime] NOT NULL,
+	[onlinetime] [datetime] NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE NONCLUSTERED INDEX [IX_tb_cluster_serverip] ON [dbo].[tb_cluster] 
+(
+	[serverip] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'服务器名' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_cluster', @level2type=N'COLUMN',@level2name=N'servername'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'服务器ip' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_cluster', @level2type=N'COLUMN',@level2name=N'serverip'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'是否开启服务器监控' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_cluster', @level2type=N'COLUMN',@level2name=N'ifmonitor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'监控的配置json' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_cluster', @level2type=N'COLUMN',@level2name=N'monitorcollectconfigjson'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'创建时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_cluster', @level2type=N'COLUMN',@level2name=N'createtime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'上次更新时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_cluster', @level2type=N'COLUMN',@level2name=N'lastupdatetime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'在线时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_cluster', @level2type=N'COLUMN',@level2name=N'onlinetime'
+GO
+/****** Object:  Default [DF_tb_cluster_onlinetime]    Script Date: 05/21/2015 17:11:37 ******/
+ALTER TABLE [dbo].[tb_cluster] ADD  CONSTRAINT [DF_tb_cluster_onlinetime]  DEFAULT (((1900)-(1))-(1)) FOR [onlinetime]
+GO

@@ -1,0 +1,101 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.PlatformManage.Model.tb_cluster_model>
+<style>
+
+
+        .divhide {
+        overflow:hidden;
+        height:200px;
+        }
+    .divopen {
+    }
+</style>
+<table>
+    <tr>
+        <th style="width:17%">信息</th>
+        <th style="width:40%">性能配置JSON</th>
+        <th style="width:40%">监控配置JSON</th>
+        @*<th>最新服务器监控信息</th>*@
+        <th>操作</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr style=" ">
+            <td style="text-align:left; vertical-align:top;">
+                【名称】<br/>@item.servername [@item.id]<br/>
+                【ip      】<br/>@item.serverip<br/>
+                【状态/监控】<br/>@Html.Raw((ViewBag.SqlTimeNow-item.onlinetime)<TimeSpan.FromSeconds(10)?"<b style='color:red'>在线</b>":"断线")/@Html.Raw(item.ifmonitor == true ? "<b style='color:red'>开启</b>" : "关闭")<br/>
+                【修改时间】<br/>@item.lastupdatetime<br/>
+                【创建时间】<br/>@item.createtime<br/>
+            </td>
+            <td style="text-align:left; vertical-align:top;"><div class="divhide">@if (!string.IsNullOrWhiteSpace(item.performancecollectconfigjson))
+                                                                  {
+                                                                      var configs = new XXF.Serialization.JsonHelper().Deserialize<List<Dyd.BaseService.Monitor.Core.CollectConfig>>(item.performancecollectconfigjson);
+                                                                      foreach (var c in configs)
+                                                                      { 
+                       <label style="color:blue; text-align:left"> @c.CollectName </label>
+                @Html.Raw((c.LessThanWarningValue != null && c.LessThanWarningValue.IsWarning == true) ? "{最小预警}" + "[" + (c.LessThanWarningValue.IsWarning == true ? "<b style='color:red'>开启</b>" : "关闭") + "," + c.LessThanWarningValue.Value + "]" : "")
+                            @Html.Raw((c.MoreThanWarningValue != null && c.MoreThanWarningValue.IsWarning == true) ? "{最大预警}" + "[" + (c.MoreThanWarningValue.IsWarning == true ? "<b style='color:red'>开启</b>" : "关闭") + "," + c.MoreThanWarningValue.Value + "]" : "")
+                            @Html.Raw((c.EqualWarningValue != null && c.EqualWarningValue.IsWarning == true) ? "{等值预警}" + "[" + (c.EqualWarningValue.IsWarning == true ? "<b style='color:red'>开启</b>" : "关闭") + "," + c.EqualWarningValue.Value + "]" : "")
+                           <span>@Html.Raw("{" + Dyd.BaseService.Monitor.Core.EnumUtils<Dyd.BaseService.Monitor.Core.CollectType>.GetText(c.CollectType) + "},{" + c.CategoryName + "," + c.CounterName + "," + c.InstanceName + "}")</span>
+                           
+                        <br/>
+                                                                      }
+                                                                  }
+            </div></td>
+            <td style="text-align:left; vertical-align:top;"><div class="divhide">@if (!string.IsNullOrWhiteSpace(item.performancecollectconfigjson))
+                                                                  {
+                                                                      var configs2 = new XXF.Serialization.JsonHelper().Deserialize<List<Dyd.BaseService.Monitor.Core.CollectConfig>>(item.monitorcollectconfigjson);
+                                                                      foreach (var c in configs2)
+                                                                      { 
+                <label style="color:blue; text-align:left"> @c.CollectName </label>
+                 @Html.Raw((c.LessThanWarningValue != null && c.LessThanWarningValue.IsWarning == true) ? "{最小预警}" + "[" + (c.LessThanWarningValue.IsWarning == true ? "<b style='color:red'>开启</b>" : "关闭") + "," + c.LessThanWarningValue.Value + "]" : "")
+                                @Html.Raw((c.MoreThanWarningValue != null && c.MoreThanWarningValue.IsWarning == true) ? "{最大预警}" + "[" + (c.MoreThanWarningValue.IsWarning == true ? "<b style='color:red'>开启</b>" : "关闭") + "," + c.MoreThanWarningValue.Value + "]" : "")
+                                @Html.Raw((c.EqualWarningValue != null && c.EqualWarningValue.IsWarning == true) ? "{等值预警}" + "[" + (c.EqualWarningValue.IsWarning == true ? "<b style='color:red'>开启</b>" : "关闭") + "," + c.EqualWarningValue.Value + "]" : "")
+                            <span> @Html.Raw("{" + Dyd.BaseService.Monitor.Core.EnumUtils<Dyd.BaseService.Monitor.Core.CollectType>.GetText(c.CollectType) + "},{" + c.CategoryName + "," + c.CounterName + "," + c.InstanceName + "}")</span>
+                             
+                            <br/>
+                                                                      }
+                                                                  }</div></td>
+            @*<td style="text-align:left; vertical-align:top">
+                @if (!string.IsNullOrWhiteSpace(item.MonitorJson))
+                {
+                    var configs3 = new XXF.Serialization.JsonHelper().Deserialize<List<Dyd.BaseService.Monitor.Domain.PlatformManage.Model.MonitorInfoModel>>(item.MonitorJson);
+                    foreach (var c in configs3)
+                    { 
+                        <label style="color:blue; text-align:left">@c.Name</label>
+                        <span>@c.Text</span>
+                        <span>@c.MonitorValue</span>
+                    }
+                }
+            </td>*@
+            <td>
+                <a id="open@(item.id)" href ="javascript:hideopen('open@(item.id)')">展开</a>
+                <a href="@Url.Action("Update", "Cluster", new { id = @item.id })">修改</a>
+                <input type="button" value="删除" onclick="Delete('@item.id')" />
+                
+            </td>
+        </tr>
+    }
+</table>
+<div class="total pt10">
+    <div class="fl">共<em>@Model.TotalPageCount</em>页<em>@Model.TotalItemCount</em>条记录，当前为第<em>@Model.CurrentPageIndex</em>页</div>
+    @Html.Pager(Model,new PagerOptions{PageIndexParameterName = "pageindex",ShowPageIndexBox = true,PageIndexBoxType = PageIndexBoxType.TextBox, CssClass="mvcPager"})
+    @*@Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "pageindex", ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.DropDownList, ShowGoButton = false }, new MvcAjaxOptions { UpdateTargetId = "List", HttpMethod = "Post", DataFormId = "searchForm" }, new { @class = "pager_page" })*@
+</div>
+<script>
+    function hideopen(item)
+    {
+        //alert($("#"+item).parent().parent().find("div").html());
+        if($("#"+item).parent().parent().find('div').hasClass("divhide"))
+        {
+            $("#"+item).parent().parent().find('div').removeClass('divhide');
+            $("#"+item).html("隐藏");
+        }
+        else
+        {
+            $("#"+item).parent().parent().find('div').addClass('divhide');
+            $("#"+item).html("展开");
+        }
+    }
+</script>

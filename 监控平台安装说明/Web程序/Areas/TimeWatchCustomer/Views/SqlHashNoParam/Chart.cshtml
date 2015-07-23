@@ -1,0 +1,62 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.TimeWatch.Model.tb_timewatchlog_api_dayreport_model>
+@{
+    ViewBag.Title = "问题SQL图表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Dictionary<int, Dyd.BaseService.Monitor.Domain.PlatformManage.Model.timewatchConnModel> dic =
+        ViewBag.TimeWatchConn as Dictionary<int, Dyd.BaseService.Monitor.Domain.PlatformManage.Model.timewatchConnModel>;
+}
+<div class="head">
+    <div class="title">
+        问题SQL图表
+    </div>
+</div>
+<div class="orderlist m10 myorder">
+    <div class="item_list pt10">
+        <div class="item_list">
+            <ul>
+                <li>
+                    <label>次数大于</label>
+                    <input type="text" class="text" id="count" name="count" value="0" />
+                </li>
+                <li>
+                    <label>数据库</label>
+                    <select name="connid" id="connid">
+                        @foreach (KeyValuePair<int, Dyd.BaseService.Monitor.Domain.PlatformManage.Model.timewatchConnModel> d in dic)
+                        { 
+                            <option value="@d.Key"@Html.Raw(d.Key == ViewBag.Connid ? "selected=selected" : "") >@d.Value.name</option>
+                        }
+                    </select>
+                </li>
+                <li class="search">
+                    <input type="button" class="btn1" value="搜索" onclick="CreateChart()" accesskey="S" /></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="ChartBtn" class="c"></div>
+<div>
+    <div id="maychart"></div>
+</div>
+<div id="ChartAmp"></div>
+<script src="~/Scripts/Highcharts-4.0.3/js/highcharts.js"></script>
+<script src="~/Scripts/StreamCreateChart.js"></script>
+<script>
+    function CreateChart()
+    {
+        $.ajax({
+            url: "/SqlHashConsult/ChartJson",
+            data: {
+                count: $("#count").val(),
+                connid: $("#connid").find("option:selected").val()
+            },
+            type: "post",
+            success: function (data) {
+                var chart = new CreateChartStream();
+                var namelist=new Array();
+                namelist.push("count");
+                chart.Init(data.data, "nodenotes", namelist, "空");
+            }
+        })
+    }
+</script>

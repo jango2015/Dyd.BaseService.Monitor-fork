@@ -1,0 +1,77 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using System;
+@model PagedList<Dyd.BaseService.Monitor.Domain.Cluster.Model.tb_cluster_monitorinfo_model>
+@{
+    var ServerConfigDic = ViewBag.ServerConfigDic as Dictionary<int, List<Dyd.BaseService.Monitor.Core.CollectConfig>>;
+}
+
+<table>
+    <tr>
+        <th style="width: 5%">服务器基本信息</th>
+        <th style="width: 40%">监控JSON</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td style="vertical-align: top; text-align: left;">@item.servername @Html.Raw((ViewBag.SqlTimeNow - item.lastupdatetime) < TimeSpan.FromSeconds(10) ? "<b style='color:red'>监控中</b>" : "停止")<br />
+                [id:@item.serverid,ip:@item.serverip]
+                <br /><a style="color:green; " href="@Url.Action("Index", "MonitorInfoSnapshot", new { Area = "Cluster", keyword = item.serverip,timebegin=DateTime.Now.Date.ToString("yyyy-MM-dd"), timeend=DateTime.Now.ToString("yyyy-MM-dd 23:59:59") })" target="_blank">查看快照</a> <a  style="color:green"  href="@Url.Action("Chart", "PerformanceCollect", new { Area="Cluster",serverip=item.serverip,datatype="avg" })"  target="_blank">查看性能</a>
+            </td>
+            <td style="text-align: left; vertical-align: top">
+                @if (!string.IsNullOrWhiteSpace(item.monitorinfojson))
+                {
+                    var configs = new XXF.Serialization.JsonHelper().Deserialize<List<Dyd.BaseService.Monitor.Domain.Cluster.Model.MonitorInfoModel>>(item.monitorinfojson);
+                    int i = 0;
+                    foreach (var c in configs)
+                    {
+                        i++;
+                        bool iswarning = false; string warningvalue="";
+                        if (ServerConfigDic.ContainsKey(item.serverid))
+                        {
+                            foreach (var d in ServerConfigDic[item.serverid])
+                            {
+                                if (d.CollectName == c.Name)
+                                {
+                                    if (d.EqualWarningValue != null && d.EqualWarningValue.IsWarning == true)
+                                    {
+                                        warningvalue += "[等值" + d.EqualWarningValue.Value.ToString() + "]";
+                                        if (d.EqualWarningValue.Value == c.MonitorValue)
+                                        { iswarning = true; }
+                                    }
+                                    if (d.LessThanWarningValue != null && d.LessThanWarningValue.IsWarning == true)
+                                    {
+                                        warningvalue += "[最小" + d.LessThanWarningValue.Value.ToString() + "]";
+                                        if (d.LessThanWarningValue.Value > c.MonitorValue)
+                                        { iswarning = true; }
+                                    }
+                                    if (d.MoreThanWarningValue != null && d.MoreThanWarningValue.IsWarning == true)
+                                    {
+                                        warningvalue += "[最大" + d.MoreThanWarningValue.Value.ToString() + "]";
+                                        if(d.MoreThanWarningValue.Value < c.MonitorValue)
+                                        { iswarning = true; }
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                        bool ifhighlight = false;
+                        if (!string.IsNullOrWhiteSpace(ViewBag.monitorjsonkeyword) && c.Name.Contains(ViewBag.monitorjsonkeyword))
+                        { ifhighlight = true; }
+                        <span  @Html.Raw(ifhighlight==true?"style='color:blue'":"")><span style="@(!string.IsNullOrWhiteSpace(ViewBag.monitorjsonkeyword)==true?"":"color: blue;") cursor:pointer">@c.Name</span>@("【")<span title="当前监控值:@(c.MonitorValue),系统预警值:@(warningvalue)"  style=" cursor:pointer;@(iswarning == true ? "color:red;" : "")">@c.Text</span>@("】")</span>
+                        if (i % 5 == 0)
+                        {
+                    <br />
+                            
+                        }
+                    }
+                }
+            </td>
+        </tr>
+    }
+</table>
+<div class="total pt10">
+    <div class="fl">共<em>@Model.TotalPageCount</em>页<em>@Model.TotalItemCount</em>条记录，当前为第<em>@Model.CurrentPageIndex</em>页</div>
+    @Html.Pager(Model, new PagerOptions { PageIndexParameterName = "pageindex", ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.TextBox, CssClass = "mvcPager" })
+</div>

@@ -1,0 +1,79 @@
+USE [dyd_bs_monitor_unitylog]
+GO
+/****** Object:  Table [dbo].[tb_log]    Script Date: 05/21/2015 17:13:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tb_log](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[sqlservercreatetime] [datetime] NOT NULL,
+	[logcreatetime] [datetime] NOT NULL,
+	[logtype] [tinyint] NOT NULL,
+	[projectname] [varchar](50) NOT NULL,
+	[logtag] [varchar](100) NOT NULL,
+	[msg] [nvarchar](1000) NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'数据库创建时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_log', @level2type=N'COLUMN',@level2name=N'sqlservercreatetime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'日志项目中创建时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_log', @level2type=N'COLUMN',@level2name=N'logcreatetime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'日志类型:一般非正常错误,系统级严重错误,一般业务日志,系统日志' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_log', @level2type=N'COLUMN',@level2name=N'logtype'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'项目名称' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_log', @level2type=N'COLUMN',@level2name=N'projectname'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'日志唯一标示(简短的方法名或者url,便于归类)' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_log', @level2type=N'COLUMN',@level2name=N'logtag'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'日志信息' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_log', @level2type=N'COLUMN',@level2name=N'msg'
+GO
+/****** Object:  Table [dbo].[tb_error_log]    Script Date: 05/21/2015 17:13:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[tb_error_log](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[sqlservercreatetime] [datetime] NOT NULL,
+	[logcreatetime] [datetime] NOT NULL,
+	[logtype] [tinyint] NOT NULL,
+	[projectname] [varchar](50) NOT NULL,
+	[logtag] [nvarchar](100) NOT NULL,
+	[msg] [varchar](max) NOT NULL,
+	[tracestack] [nvarchar](1000) NOT NULL,
+	[remark] [nvarchar](500) NOT NULL,
+	[developer] [varchar](100) NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'数据库创建时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_error_log', @level2type=N'COLUMN',@level2name=N'sqlservercreatetime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'日志项目中创建时间' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_error_log', @level2type=N'COLUMN',@level2name=N'logcreatetime'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'日志类型:一般非正常错误,系统级严重错误' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_error_log', @level2type=N'COLUMN',@level2name=N'logtype'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'项目名称' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_error_log', @level2type=N'COLUMN',@level2name=N'projectname'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'日志唯一标示(简短的方法名或者url,便于归类)' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_error_log', @level2type=N'COLUMN',@level2name=N'logtag'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'错误信息' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_error_log', @level2type=N'COLUMN',@level2name=N'msg'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'堆栈跟踪' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_error_log', @level2type=N'COLUMN',@level2name=N'tracestack'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'其他备注信息' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_error_log', @level2type=N'COLUMN',@level2name=N'remark'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'相关开发人员' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'tb_error_log', @level2type=N'COLUMN',@level2name=N'developer'
+GO
+/****** Object:  Default [DF_tb_error_log_sqlservercreatetime]    Script Date: 05/21/2015 17:13:14 ******/
+ALTER TABLE [dbo].[tb_error_log] ADD  CONSTRAINT [DF_tb_error_log_sqlservercreatetime]  DEFAULT (getdate()) FOR [sqlservercreatetime]
+GO
+/****** Object:  Default [DF_tb_log_sqlservercreatetime]    Script Date: 05/21/2015 17:13:14 ******/
+ALTER TABLE [dbo].[tb_log] ADD  CONSTRAINT [DF_tb_log_sqlservercreatetime]  DEFAULT (getdate()) FOR [sqlservercreatetime]
+GO

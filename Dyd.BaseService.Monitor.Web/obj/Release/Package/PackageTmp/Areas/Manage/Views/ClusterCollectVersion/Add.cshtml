@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "新增";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    function sub() {
+        if ($("#filedll").val() == "") {
+            alert("请选择上传的文件！")
+            return false;
+        }
+    }
+</script>
+<div class="head">
+    <div class="title">
+        新增任务
+    </div>
+</div>
+<div>
+    @using (Html.BeginForm("Add", "ClusterCollectVersion", FormMethod.Post, new { enctype = "multipart/form-data", @onsubmit = "return sub()" }))
+    {
+    <ul class="mydetail">
+        <li>
+            <label>DLL文件</label><input type="file" id="filedll" name="filedll" />
+        </li>
+        <li>
+            <input type="submit" class="btn1" value="提交" />@Html.ValidationMessage("Error")
+        </li>
+    </ul>
+    }
+</div>

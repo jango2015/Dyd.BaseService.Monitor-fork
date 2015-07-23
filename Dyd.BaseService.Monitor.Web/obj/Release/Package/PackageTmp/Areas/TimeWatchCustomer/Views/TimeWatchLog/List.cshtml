@@ -1,0 +1,35 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.TimeWatch.Model.tb_timewatchlog_model>
+@using XXF.Extensions;
+
+<table>
+    <tr>
+        <th  style="width:40px;">ID</th>
+        <th style="width:180px;">创建时间</th>
+        <th style="width:50px;">耗时(s)</th>
+        <th style="width:150px;">基本信息</th>
+        <th style="width:60%">当前信息</th>
+        <th style="width:150px;">ip</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.id</td>
+            <td style="text-align:left;">本地:@item.sqlservercreatetime<br/>日志:@item.logcreatetime</td>
+            <td>@item.time.ToString("f3")</td>
+            <td style="text-align:left;">项目名称:@item.projectname <br/>
+            日志类型:@(Dyd.BaseService.Monitor.Core.EnumUtils<XXF.BaseService.Monitor.SystemRuntime.EnumTimeWatchLogType>.GetText((XXF.BaseService.Monitor.SystemRuntime.EnumTimeWatchLogType)item.logtype))<br/>
+            日志标识:@item.logtag<br/>
+            Url:@item.url
+            </td>
+            <td style="text-align:left;word-break:break-all" title="@(item.msg+"\r\n[备注]"+item.remark)">@((item.msg+"\r\n[备注]"+item.remark).SubString3(250))</td>
+            <td>来源ip:@item.fromip <br/>
+            sqlip:@item.sqlip</td>
+        </tr>
+    }
+</table>
+<div class="total pt10">
+    <div class="fl">共<em>@Model.TotalPageCount</em>页<em>@Model.TotalItemCount</em>条记录，当前为第<em>@Model.CurrentPageIndex</em>页</div>
+    @Html.Pager(Model,new PagerOptions{PageIndexParameterName = "pageindex",ShowPageIndexBox = true,PageIndexBoxType = PageIndexBoxType.TextBox, CssClass="mvcPager"})
+    @*@Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "pageindex", ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.DropDownList, ShowGoButton = false }, new MvcAjaxOptions { UpdateTargetId = "List", HttpMethod = "Post", DataFormId = "searchForm" }, new { @class = "pager_page" })*@
+</div>

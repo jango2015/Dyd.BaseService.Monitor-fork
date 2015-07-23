@@ -1,0 +1,49 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.TimeWatch.Model.tb_sqlhash_url_contrast_model>
+@using XXF.Extensions;
+<style>
+    tr b {
+        color: black;
+    }
+
+    tr .order {
+        color: red;
+    }
+</style>
+<table class="mytable">
+    <tr>
+        
+        <th style="width:100px;">URL</th>
+        <th style="width:80px;">SQLHASH</th>
+        <th style="">SQL</th>
+        <th style="width:80px;">最新日期</th>
+        <th style="width:100px;">时间(s)</th>
+        <th style="width:90px;">操作</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+           
+            
+            <td><b @Html.Raw((ViewBag.orderby).ToLower() == "" ? "class='order'" : "")>@item.url</b></td>
+            <td><a href="@Url.Action("Chart", "TimeWatchLog", new { Area = "TimeWatchCustomer", logtag = item.sqlhash, type = (int)XXF.BaseService.Monitor.SystemRuntime.EnumTimeWatchLogType.SqlCmd, connid = ViewBag.Connid, date = item.date.ToString("yyyy-MM-dd"), datatype = "avg" })" title="点击查看性能图" target="_blank">@item.sqlhash</a></td>
+            <td title="@item.sql">@item.sql.SubString3(100)@Html.Raw(string.IsNullOrWhiteSpace(item.sql.SubString3(100)) ? string.Format("<a href='/TimeWatchCustomer/TimeWatchLog?timebegin={0}&timeend={1}&logtag={2}&connid={3}&logtype={4}' target='_blank'>找不到sql?</a>"
+            , item.date.ToString("yyyy-MM-dd HH:mm:ss"), item.date.ToString("yyyy-MM-dd") + " 23:59:59", item.sqlhash, ViewBag.Connid, (int)XXF.BaseService.Monitor.SystemRuntime.EnumTimeWatchLogType.SqlCmd) : "")</td>
+             <td>@item.date.ToString("yyyy-MM-dd")</td>
+            <td style="text-align:left"><b @Html.Raw((ViewBag.orderby).ToLower() == "avgtime" ? "class='order'" : "")>平均:@item.avgtime.ToString("f3")</b>(s)<br/>
+            <b @Html.Raw((ViewBag.orderby).ToLower() == "maxtime" ? "class='order'" : "")>最大:@item.maxtime.ToString("f3")</b>(s)<br/>
+            <b @Html.Raw((ViewBag.orderby).ToLower() == "mintime" ? "class='order'" : "")>最小:@item.mintime.ToString("f3")</b>(s)<br/>
+            <b @Html.Raw((ViewBag.orderby).ToLower() == "count" ? "class='order'" : "")>调用:@item.count</b>(次)</td>
+            <td class="caozuo">
+                <a href="@Url.Action("Index", "SqlHashContrastUrl", new { Area = "TimeWatchCustomer", url = item.url, connid = ViewBag.Connid })" target="_blank">api相关sql</a><br/>
+                <a href="@Url.Action("Chart", "TimeWatchLog", new { Area="TimeWatchCustomer",logtag=item.url,type=(int)XXF.BaseService.Monitor.SystemRuntime.EnumTimeWatchLogType.ApiUrl,connid=ViewBag.Connid,date=item.date.ToString("yyyy-MM-dd"),datatype="avg" })" target="_blank">api性能图</a><br/>
+                <a href="@Url.Action("Chart", "TimeWatchLog", new { Area="TimeWatchCustomer",logtag=item.sqlhash,type=(int)XXF.BaseService.Monitor.SystemRuntime.EnumTimeWatchLogType.SqlCmd,connid=ViewBag.Connid,date=item.date.ToString("yyyy-MM-dd"),datatype="avg" })" target="_blank">sql性能图</a><br/>
+                <a href="@Url.Action("Index", "TimeWatchLogSqlDayReport", new { Area="TimeWatchCustomer",sqlhash=item.sqlhash,connid=ViewBag.Connid,datatype="avg",timebegin=DateTime.Now.ToString("yyyy-MM-01"),timeend=DateTime.Now.ToString("yyyy-MM-dd") })"  target="_blank">当月耗时</a>
+        </tr>
+    }
+</table>
+<div class="total pt10">
+    <div class="fl">共<em>@Model.TotalPageCount</em>页<em>@Model.TotalItemCount</em>条记录，当前为第<em>@Model.CurrentPageIndex</em>页</div>
+    @Html.Pager(Model, new PagerOptions { PageIndexParameterName = "pageindex", ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.TextBox, CssClass = "mvcPager" })
+    @*@Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "pageindex", ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.DropDownList, ShowGoButton = false }, new MvcAjaxOptions { UpdateTargetId = "List", HttpMethod = "Post", DataFormId = "searchForm" }, new { @class = "pager_page" })*@
+</div>

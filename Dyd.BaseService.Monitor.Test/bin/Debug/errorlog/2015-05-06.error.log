@@ -1,0 +1,80 @@
+【时间】2015-05-06 13:32:24:594
+【补充信息】sql执行出错sql执行拦截 参数
+【地址】
+【原始信息】无法访问目标表“tb_timewatchlog20150506”。
+【参数】
+【堆栈打印】   在 System.Data.SqlClient.SqlBulkCopy.WriteToServerInternalRestAsync(CancellationToken cts, TaskCompletionSource`1 source)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteToServerInternalAsync(CancellationToken ctoken)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteRowSourceToServerAsync(Int32 columnCount, CancellationToken ctoken)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteToServer(DataTable table, DataRowState rowState)
+   在 XXF.Db.DbConnSql.<>c__DisplayClass10.<SqlBulkCopy>b__f() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 330
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 48
+******************************************************************************************************************************************************
+【时间】2015-05-06 13:47:24:231
+【补充信息】sql执行出错sql执行拦截 参数
+【地址】
+【原始信息】无法访问目标表“tb_timewatchlog20150506”。
+【参数】
+【堆栈打印】   在 System.Data.SqlClient.SqlBulkCopy.WriteToServerInternalRestAsync(CancellationToken cts, TaskCompletionSource`1 source)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteToServerInternalAsync(CancellationToken ctoken)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteRowSourceToServerAsync(Int32 columnCount, CancellationToken ctoken)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteToServer(DataTable table, DataRowState rowState)
+   在 XXF.Db.DbConnSql.<>c__DisplayClass13.<SqlBulkCopy>b__12() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 350
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 48
+******************************************************************************************************************************************************
+【时间】2015-05-06 13:48:34:614
+【补充信息】sql执行出错sql执行拦截 参数
+【地址】192.168.17.201
+【原始信息】不能将值 NULL 插入列 'sqlservercreatetime'，表 'dyd_bs_monitor_timewatch_customer.dbo.tb_timewatchlog20150506'；列不允许有 Null 值。INSERT 失败。
+语句已终止。
+【参数】
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   在 System.Data.SqlClient.SqlBulkCopy.RunParser(BulkCopySimpleResultSet bulkCopyHandler)
+   在 System.Data.SqlClient.SqlBulkCopy.CopyBatchesAsyncContinuedOnSuccess(BulkCopySimpleResultSet internalResults, String updateBulkCommandText, CancellationToken cts, TaskCompletionSource`1 source)
+   在 System.Data.SqlClient.SqlBulkCopy.CopyBatchesAsyncContinued(BulkCopySimpleResultSet internalResults, String updateBulkCommandText, CancellationToken cts, TaskCompletionSource`1 source)
+   在 System.Data.SqlClient.SqlBulkCopy.CopyBatchesAsync(BulkCopySimpleResultSet internalResults, String updateBulkCommandText, CancellationToken cts, TaskCompletionSource`1 source)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteToServerInternalRestContinuedAsync(BulkCopySimpleResultSet internalResults, CancellationToken cts, TaskCompletionSource`1 source)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteToServerInternalRestAsync(CancellationToken cts, TaskCompletionSource`1 source)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteToServerInternalAsync(CancellationToken ctoken)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteRowSourceToServerAsync(Int32 columnCount, CancellationToken ctoken)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteToServer(DataTable table, DataRowState rowState)
+   在 XXF.Db.DbConnSql.<>c__DisplayClass13.<SqlBulkCopy>b__12() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 350
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 48
+******************************************************************************************************************************************************
+【时间】2015-05-06 14:18:01:145
+【补充信息】sql执行出错sql执行拦截 参数
+【地址】
+【原始信息】无法访问目标表“tb_timewatchlog_api20150506”。
+【参数】
+【堆栈打印】   在 System.Data.SqlClient.SqlBulkCopy.WriteToServerInternalRestAsync(CancellationToken cts, TaskCompletionSource`1 source)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteToServerInternalAsync(CancellationToken ctoken)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteRowSourceToServerAsync(Int32 columnCount, CancellationToken ctoken)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteToServer(DataTable table, DataRowState rowState)
+   在 XXF.Db.DbConnSql.<>c__DisplayClass13.<SqlBulkCopy>b__12() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 350
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 48
+******************************************************************************************************************************************************
+【时间】2015-05-06 14:20:01:774
+【补充信息】sql执行出错sql执行拦截 参数
+【地址】192.168.17.201
+【原始信息】不能将值 NULL 插入列 'sqlservercreatetime'，表 'dyd_bs_monitor_timewatch_customer.dbo.tb_timewatchlog_api20150506'；列不允许有 Null 值。INSERT 失败。
+语句已终止。
+【参数】
+【堆栈打印】   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   在 System.Data.SqlClient.SqlBulkCopy.RunParser(BulkCopySimpleResultSet bulkCopyHandler)
+   在 System.Data.SqlClient.SqlBulkCopy.CopyBatchesAsyncContinuedOnSuccess(BulkCopySimpleResultSet internalResults, String updateBulkCommandText, CancellationToken cts, TaskCompletionSource`1 source)
+   在 System.Data.SqlClient.SqlBulkCopy.CopyBatchesAsyncContinued(BulkCopySimpleResultSet internalResults, String updateBulkCommandText, CancellationToken cts, TaskCompletionSource`1 source)
+   在 System.Data.SqlClient.SqlBulkCopy.CopyBatchesAsync(BulkCopySimpleResultSet internalResults, String updateBulkCommandText, CancellationToken cts, TaskCompletionSource`1 source)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteToServerInternalRestContinuedAsync(BulkCopySimpleResultSet internalResults, CancellationToken cts, TaskCompletionSource`1 source)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteToServerInternalRestAsync(CancellationToken cts, TaskCompletionSource`1 source)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteToServerInternalAsync(CancellationToken ctoken)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteRowSourceToServerAsync(Int32 columnCount, CancellationToken ctoken)
+   在 System.Data.SqlClient.SqlBulkCopy.WriteToServer(DataTable table, DataRowState rowState)
+   在 XXF.Db.DbConnSql.<>c__DisplayClass13.<SqlBulkCopy>b__12() 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbConnSql.cs:行号 350
+   在 XXF.Db.DbCatch.Catch[T](Boolean istimeWatch, String datasource, String sql, List`1 procedurePar, Func`1 action) 位置 e:\working\BasicService\XXFramework\project\Xiaoxiao.Framework\Xiaoxiao.Framework\Db\DbCatch.cs:行号 48
+******************************************************************************************************************************************************

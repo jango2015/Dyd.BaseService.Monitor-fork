@@ -1,0 +1,89 @@
+﻿ <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/css.css" rel="stylesheet" />
+    <link href="~/Content/HighChartPackCss.css" rel="stylesheet" />
+@*        <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />*@
+        <script src="~/Scripts/jquery-1.8.0.min.js" type="text/javascript"></script>
+@*    <script src="~/Scripts/jquery-ui-1.8.20.min.js"></script>*@
+
+    <script src="~/Scripts/DatePicker/WdatePicker.js"></script>
+    <script src="~/Content/js/common.js"></script>
+    @RenderSection("Styles", false)
+    @RenderSection("Scripts", false)
+</head>
+<body>
+     <div class="header">
+        <span style="color: white; font-size: 25px; margin-left: 25px; font-weight: bold; font-family: 微软雅黑;">点呀点监控平台</span>
+        <div class="fr mr10">
+            
+            <span id="toptips" class="remind fl"><span id="toptips1"></span></span>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="/login/logout" class="fl">退出</a>
+            }
+            else
+            {
+                <a href="/login/login" class="fl">登录</a>
+            }
+        </div>
+    </div>
+    <div class="content w">
+        <div class="leftmenu fl">
+            <ul class="level1">
+                @if(Convert.ToInt32(User.Identity.Name.Split(' ').LastOrDefault())==(int)XXF.BaseService.Monitor.SystemRuntime.EnumUserRole.Admin)
+                {
+                <li>
+                    <p>参数配置管理<i></i></p>
+                    <ul class="level2">
+                        <li><a href="@Url.Action("index", "Cluster", new { area="Manage" })">监控服务器</a></li>
+                        <li><a href="@Url.Action("index", "Config", new { area="Manage" })">配置字典</a></li>
+                        <li><a href="@Url.Action("index", "User", new { area="Manage" })">用户管理  </a></li>
+                        <li><a href="@Url.Action("index", "ClusterCollectVersion", new { area="Manage" })">服务器采集Dll版本</a></li>
+                        <li><a href="@Url.Action("index", "DataBaseConfig", new { area="Manage" })">数据库配置</a></li>
+                    </ul>
+                </li>
+                }
+                <li>
+                    <p>耗时监控管理<i></i></p>
+                    <ul class="level2">
+                        <li><a href="@Url.Action("index", "TimeWatchLogSqlDayReport", new { area="TimeWatchCustomer" })">SQL月耗时表</a></li>
+                        <li><a href="@Url.Action("index", "TimeWatchLogApiDayReport", new { area="TimeWatchCustomer" })">API月耗时表</a></li>
+@*                        <li><a href="@Url.Action("index", "TimeWatchLogSql", new { area="TimeWatchCustomer" })">SQL日耗时表</a></li>
+                        <li><a href="@Url.Action("index", "TimeWatchLogApi", new { area="TimeWatchCustomer" })">Api日耗时表</a></li>*@
+                        <li><a href="@Url.Action("Chart", "TimeWatchLog", new { area="TimeWatchCustomer" })">耗时性能图</a></li>
+                        <li><a href="@Url.Action("index", "TimeWatchLog", new { area="TimeWatchCustomer" })">耗时查询</a></li>
+                        <li><a href="@Url.Action("index", "SqlHashContrastUrl", new { area="TimeWatchCustomer" })">URL/Sql对照表</a></li>
+                        <li><a href="@Url.Action("index", "SqlHashConsult", new { area="TimeWatchCustomer" })">SQL参照表</a></li>
+                        <li><a href="@Url.Action("index", "SqlHashNoParam", new { area="TimeWatchCustomer" })">问题SQL列表</a></li>
+                    </ul>
+                </li>
+                 <li>
+                    <p>集群监控管理<i></i></p>
+                    <ul class="level2">
+                        <li><a href="@Url.Action("index", "PerformanceCollect", new { area="Cluster" })">服务器日性能表</a></li>
+                        <li><a href="@Url.Action("index", "PerformanceDayReport", new { area="Cluster" })">服务器月性能表</a></li>
+                        <li><a href="@Url.Action("Chart", "PerformanceCollect", new { area="Cluster" })">服务器性能图</a></li>
+                        <li><a href="@Url.Action("index", "MonitorInfo", new { area="Cluster" })">服务器监控信息</a></li>
+                        <li><a href="@Url.Action("index", "MonitorInfoSnapshot", new { area="Cluster" })">服务器监控快照</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <p>统一日志管理<i></i></p>
+                    <ul class="level2">
+                        <li><a href="@Url.Action("index", "Log", new { area="UnityLog" })">统一日志</a></li>
+                        <li><a href="@Url.Action("index", "ErrorLog", new { area="UnityLog" })">错误日志</a></li>
+                    </ul>
+                </li>
+               
+            </ul>
+        </div>
+        <div class="main_cont">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

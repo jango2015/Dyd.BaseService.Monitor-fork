@@ -1,0 +1,68 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.PlatformManage.Model.tb_database_config_model>
+@{
+    ViewBag.Title = "数据库配置";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    @{Html.RegisterMvcPagerScriptResource();}
+}
+<script>
+    function Delete(id) {
+        if (confirm("确定删除吗？")) {
+            $.ajax({
+                url: '@Url.Action("Delete", "DataBaseConfig")',
+                type: "post",
+                data: {
+                    id: id
+                },
+                success: function (data) {
+                    if (data.code > 0) {
+                        alert("成功！");
+                        window.location = window.location;
+                    }
+                    else {
+                        alert(data.msg);
+                    }
+                }
+            })
+        }
+    }
+</script>
+<div class="head">
+    <div class="title">
+        数据库配置
+    </div>
+</div>
+<div class="orderlist m10 myorder">
+@*    @using (Html.BeginForm("index", "DataBaseConfig", FormMethod.Get, new RouteValueDictionary { { "id", "searchForm" } }))
+    {
+        <div class="item_list pt10">
+            <div class="item_list">
+                <ul>
+                    <li>
+                        <label>关键字</label>
+                        <input type="text" name="keyword" value="@ViewBag.keyword" />
+                    </li>
+                    <li>
+                        <label>数据库类型</label>
+                        <select name="dbtype">
+                            <option value="-1">请选择</option>
+                            @foreach (var o in (Dyd.BaseService.Monitor.Core.EnumUtils<XXF.BaseService.Monitor.SystemRuntime.DataBaseType>.GetAllEnumsOfList2()))
+                            {
+                                <option value="@o.Value" @Html.Raw(ViewBag.dbtype.ToString()==o.Value?"selected=selected":"")>@o.Text</option>
+                            }
+                        </select>
+                    </li>
+                    <li class="search">
+                        <input type="submit" class="btn1" value="搜索" accesskey="S" /></li>
+                </ul>
+            </div>
+        </div>
+    }*@
+    <a href="@Url.Action("add", "DataBaseConfig")" class="btn1">新增</a>
+    <div class="List">
+        @Html.Partial("List", Model);
+    </div>
+</div>

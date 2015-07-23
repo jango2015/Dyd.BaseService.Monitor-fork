@@ -1,0 +1,16 @@
+E:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\bin\Release\Dyd.BaseService.Monitor.Core.dll
+E:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\bin\Release\Dyd.BaseService.Monitor.Core.pdb
+E:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\bin\Release\XXF.dll
+E:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\bin\Release\Newtonsoft.Json.dll
+E:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\bin\Release\ServiceStack.Redis.dll
+E:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\bin\Release\MvcPager.dll
+E:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\bin\Release\System.Net.Http.dll
+E:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\bin\Release\ServiceStack.Interfaces.dll
+E:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\bin\Release\ServiceStack.Text.dll
+E:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\bin\Release\ServiceStack.Common.dll
+E:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\bin\Release\XXF.pdb
+E:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\bin\Release\System.Net.Http.xml
+E:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\bin\Release\zh-Hans\System.Net.Http.resources.dll
+E:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\obj\Release\Dyd.BaseService.Monitor.Core.csprojResolveAssemblyReference.cache
+E:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\obj\Release\Dyd.BaseService.Monitor.Core.dll
+E:\working\BasicService\Dyd.BaseService.Monitor\Dyd.BaseService.Monitor.Core\obj\Release\Dyd.BaseService.Monitor.Core.pdb

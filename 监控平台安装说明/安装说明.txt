@@ -1,0 +1,33 @@
+1.运行数据库脚本生成数据库【有问题,找车江毅】
+2.部署web站点
+  2.0 部署web站点【有问题,找张琪挺】
+  2.1 增加数据库配置（监控平台自身的数据库分库配置）【有问题,找车江毅】
+  2.2 增加用户管理中的管理员用户【有问题,找车江毅】
+  2.3 增加服务器采集dll版本中上传最新版本的dll版本。【有问题,找车江毅】
+  2.4 配置字典增加所有系统相关配置。【有问题,找车江毅】
+  2.5 挂载所有监控平台的系统任务至“任务调度平台”。【有问题,找车江毅】
+3.部署服务
+  3.1 在web站点新建服务（监控关闭）【有问题,找车江毅】
+  3.2 在指定服务器部署采集服务，并启动服务。[记得要配置app.config,运行安装.bat,每天服务器只装一个]【有问题,找车江毅】
+  3.3 在web站点对应的服务配置好，并开启监控。【有问题,找车江毅】
+4.capi耗时集成
+  4.1 增加集成配置（注意原来的一些类似配置要覆盖掉）
+          <!--耗时日志配置相关-->
+    <add key="IsWriteTimeWatchLog" value="true" />
+    <add key="IsWriteTimeWatchLogToLocalFile" value="false" />
+    <add key="IsWriteTimeWatchLogToMonitorPlatform" value="true" />
+    <add key="ProjectName" value="test" /> 
+    <add key="TimeWatchConnectionString" value="server=192.168.17.201;Initial Catalog=dyd_bs_monitor_timewatch_customer;User ID=sa;Password=Xx~!@#; " />
+    <!--普通日志配置相关-->
+    <add key="IsWriteCommonLog" value="true" />
+    <add key="IsWriteCommonLogToLocalFile" value="true" />
+    <add key="IsWriteCommonLogToMonitorPlatform" value="true" />
+    <!--<add key="ProjectName" value="test" />--> 
+    <add key="MonitorPlatformConnectionString" value="server=192.168.17.201;Initial Catalog=dyd_bs_monitor_platform_manage;User ID=sa;Password=Xx~!@#; " />
+    <!--错误日志配置相关-->
+    <add key="IsWriteErrorLog" value="true" />
+    <add key="IsWriteErrorLogToLocalFile" value="true" />
+    <add key="IsWriteErrorLogToMonitorPlatform" value="true" />
+    <!--<add key="ProjectName" value="test" />--> 
+    <!--<add key="MonitorPlatformConnectionString" value="server=192.168.17.201;Initial Catalog=dyd_bs_monitor_platform_manage;User ID=sa;Password=Xx~!@#; " />-->
+  4.2 将最新的xxf替换capi bin目录的dll

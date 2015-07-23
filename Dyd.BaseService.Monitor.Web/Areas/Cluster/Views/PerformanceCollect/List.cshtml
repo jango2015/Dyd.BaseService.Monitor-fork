@@ -1,0 +1,46 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model PagedList<Dyd.BaseService.Monitor.Domain.Cluster.Model.tb_performance_collect_model>
+<style>
+     tr b {
+        color:black;
+    }
+    tr .order{
+        color:red; 
+        
+    }
+   
+</style>
+<table>
+    <tr>
+        <th>ID</th>
+        <th >[服务器名称,ip,id]</th>
+        <th >CPU(%)</th>
+        <th>可用内存(M)</th>
+        <th >上传流量(Byte)</th>
+        <th>下载流量(Byte)</th>
+        <th> 磁盘读(Byte)</th>
+        <th >磁盘写(Byte)</th>
+        <th >IIS请求(s)</th>
+        <th >创建时间</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.id</td>
+            <td style="text-align:left "><a href="@Url.Action("Chart", "PerformanceCollect", new { Area="Cluster",serverip=item.serverip,date=item.createtime.Date.ToString("yyyy-MM-dd"),datatype="avg" })" title="点击查看性能图" target="_blank">[<b style="color:blue;">@item.servername</b>,@item.serverip,@item.serverid]</a></td>
+            <td><b @Html.Raw(ViewBag.orderby=="cpu"?"class='order'":"")>@item.cpu</b></td>
+            <td><b @Html.Raw(ViewBag.orderby=="memory"?"class='order'":"")>@item.memory</b></td>
+            <td><b @Html.Raw(ViewBag.orderby=="networkupload"?"class='order'":"")>@item.networkupload</b></td>
+            <td><b @Html.Raw(ViewBag.orderby=="networkdownload"?"class='order'":"")>@item.networkdownload</b></td>
+            <td><b @Html.Raw(ViewBag.orderby=="ioread"?"class='order'":"")>@item.ioread</b></td>
+            <td><b @Html.Raw(ViewBag.orderby=="iowrite"?"class='order'":"")>@item.iowrite</b></td>
+            <td><b @Html.Raw(ViewBag.orderby=="iisrequest"?"class='order'":"")>@item.iisrequest</b></td>
+            <td><b @Html.Raw(ViewBag.orderby==""?"class='order'":"")>@item.createtime</b></td>
+        </tr>
+    }
+</table>
+<div class="total pt10">
+    <div class="fl">共<em>@Model.TotalPageCount</em>页<em>@Model.TotalItemCount</em>条记录，当前为第<em>@Model.CurrentPageIndex</em>页</div>
+    @Html.Pager(Model,new PagerOptions{PageIndexParameterName = "pageindex",ShowPageIndexBox = true,PageIndexBoxType = PageIndexBoxType.TextBox, CssClass="mvcPager"})
+    @*@Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "pageindex", ShowPageIndexBox = true, PageIndexBoxType = PageIndexBoxType.DropDownList, ShowGoButton = false }, new MvcAjaxOptions { UpdateTargetId = "List", HttpMethod = "Post", DataFormId = "searchForm" }, new { @class = "pager_page" })*@
+</div>

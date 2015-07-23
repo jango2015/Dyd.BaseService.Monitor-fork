@@ -1,0 +1,112 @@
+﻿@using Dyd.BaseService.Monitor.Domain.PlatformManage.Model;
+@model tb_cluster_model
+@{
+    ViewBag.Title = "修改";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+  <link href="~/Content/jsoneditor/jsoneditor.min.css" rel="stylesheet" type="text/css">
+  <script src="~/Content/jsoneditor/jsoneditor.min.js"></script>
+<script>
+    function sub() {
+        if ($("#servername").val() == "") {
+            alert("请填写名称！")
+            return false;
+        }
+        var nodeip = $("#serverip").val();
+        if (nodeip == "") {
+            alert("请填写IP！");
+            return false;
+        }
+        else {
+            //ip地址
+            var exp = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
+            var reg = nodeip.match(exp);
+            if (reg == null) {
+                alert("IP地址不合法！");
+                return false;
+            }
+        }
+        if ($("#performancecollectconfigjson").val() == "") {
+            alert("请填写性能检测内容配置JSON！");
+            return false;
+        }
+        if ($("#monitorcollectconfigjson").val() == "") {
+            alert("请填写监控配置JSON！");
+            return false;
+        }
+    }
+</script>
+<div class="head">
+    <div class="title">
+        修改服务器信息
+    </div>
+</div>
+<div>
+    @Html.ValidationMessage("Error")
+    @using (Html.BeginForm("Update", "Cluster", FormMethod.Post, new { enctype = "multipart/form-data", @onsubmit = "return sub()" }))
+    {
+        <input type="hidden" name="id" value="@Model.id" />
+        <ul class="mydetail">
+            <li>
+                <label>服务器名称</label><input class="mylongtext" type="text" id="servername" name="servername" value="@Model.servername" />
+            </li>
+            <li>
+                <label>服务器IP</label><input type="text" name="serverip" value="@Model.serverip" />
+            </li>
+            <li>
+                <label>是否开启监控</label>
+                <select id="ifmonitor" name="ifmonitor">
+                    <option @Html.Raw(Model.ifmonitor == true ? "selected=selected" : "") value="true">开启</option>
+                    <option @Html.Raw(Model.ifmonitor == false ? "selected=selected" : "") value="false">关闭</option>
+                </select>（若开启监控，则对应的服务会加载配置json采集数据，否则只保留运行状态，不开启服务器数据采集）
+            </li>
+            <li>
+                <label>性能检测内容配置JSON</label>
+                <textarea id="performancecollectconfigjson" name="performancecollectconfigjson" style="height: 500px; width:700px;display:none">@Model.performancecollectconfigjson</textarea>
+                <div id="divperformancecollectconfigjson" style="height: 500px; width:700px; padding-left:190px;"></div>
+            </li>
+            <li>
+                <label>监控配置JSON</label>
+                <textarea id="monitorcollectconfigjson" name="monitorcollectconfigjson" style="height: 500px; width:700px; display:none">@Model.monitorcollectconfigjson</textarea>
+                 <div id="divmonitorcollectconfigjson" style="height: 500px; width:700px;padding-left:190px;"></div>
+            </li>
+            <li>
+                <input type="submit" class="btn1" value="提交" onclick="$('#performancecollectconfigjson').val(editor.getText()); $('#monitorcollectconfigjson').val(editor2.getText()); "/>(保存修改,服务会自动重启并应用更新)
+            </li>
+        </ul>
+    }
+    <script>
+        var container, options, json, editor;
+
+        container = document.getElementById('divperformancecollectconfigjson');
+
+        options = {
+            mode: 'code',
+            modes: ['code', 'form', 'text', 'tree', 'view'], // allowed modes
+            error: function (err) {
+                alert(err.toString());
+            }
+        };
+
+        json = @Html.Raw(Model.performancecollectconfigjson);
+
+        editor = new JSONEditor(container, options, json);
+
+        var container2, options2, json2, editor2;
+
+        container2 = document.getElementById('divmonitorcollectconfigjson');
+
+        options2 = {
+            mode: 'code',
+            modes: ['code', 'form', 'text', 'tree', 'view'], // allowed modes
+            error: function (err) {
+                alert(err.toString());
+            }
+        };
+
+        json2 = @Html.Raw(Model.monitorcollectconfigjson);
+
+        editor2 = new JSONEditor(container2, options2, json2);
+
+</script>
+</div>

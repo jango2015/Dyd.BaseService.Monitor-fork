@@ -1,0 +1,35 @@
+﻿@using Webdiyer.WebControls.Mvc
+@using XXF.Extensions;
+@model PagedList<Dyd.BaseService.Monitor.Domain.PlatformManage.Model.tb_database_config_model>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>名称</th>
+        <th>IP</th>
+        <th>库名</th>
+        <th>用户</th>
+        <th>密码</th>
+        <th>类型</th>
+        <th>操作</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.id</td>
+            <td>@item.dblocalname</td>
+            <td>@item.dbserver</td>
+            <td>@item.dbname</td>
+            <td>@item.dbuser</td>
+            <td>*********</td>
+            <td>@(Dyd.BaseService.Monitor.Core.EnumUtils<XXF.BaseService.Monitor.SystemRuntime.DataBaseType>.GetText((XXF.BaseService.Monitor.SystemRuntime.DataBaseType)item.dbtype))</td>
+            <td>
+                <a href="@Url.Action("Update", "DataBaseConfig", new { id = @item.id })">修改</a>
+                <input type="button" value="删除" onclick="Delete('@item.id')" />
+            </td>
+        </tr>
+    }
+</table>
+<div class="total pt10">
+    <div class="fl">共<em>@Model.TotalPageCount</em>页<em>@Model.TotalItemCount</em>条记录，当前为第<em>@Model.CurrentPageIndex</em>页</div>
+    @Ajax.Pager(Model, new PagerOptions { PageIndexParameterName = "pageindex" }, new MvcAjaxOptions { UpdateTargetId = "List", HttpMethod = "Post", DataFormId = "searchForm" }, new { @class = "pager_page" })
+</div>
